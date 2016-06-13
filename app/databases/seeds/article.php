@@ -6,10 +6,43 @@
  * Time: 10:39
  */
 
-namespace app\seeds;
+namespace app\databases\seeds;
 
+use Carbon\Carbon;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
-class seedUser
+class Article
 {
+    public function run()
+    {
 
+        /*
+         *  $table->increments('id');
+            $table->string('nom');
+            $table->text('description');
+            $table->integer('type');
+            $table->integer('prix');
+            $table->string('editeur');
+            $table->timestamps();
+         * */
+        Capsule::table('articles')->insert([
+            'nom' => 'Star Wars 7',
+            'description' => 'Dernier né des films Lucas',
+            'type' => 'DVD',
+            'prix' => '25',
+            'editeur' => 'Lucas arts',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        Capsule::table('articles')->insert([
+            'nom' => 'Gods of Egypt',
+            'description' => 'Fantasy',
+            'type' => 'DVD',
+            'prix' => '25',
+            'editeur' => 'JB films',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+    }
 }
