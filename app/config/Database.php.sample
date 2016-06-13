@@ -13,9 +13,10 @@ class Database {
 			'host' => 'localhost',
             'database' => 'mediastore',
             'username' => 'root',
-            'password' => 'root',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => ''
+            'password' => '',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
 		]);
 
 		$capsule->setAsGlobal();
