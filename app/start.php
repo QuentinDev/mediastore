@@ -1,10 +1,18 @@
 <?php
+require_once 'vendor/autoload.php';
 
 use app\config\Database;
-use app\controllers\Controller;
+use app\config\Router;
+use app\config\Config;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// configuration du mode debug
+ini_set('display_errors', Config::get('debug'));
 
-Database::init();
+// configuration de la timezone
+date_default_timezone_set(Config::get('timezone'));
 
-new Controller();
+// Configuration de  l'orm
+Database::init(Config::get('database'));
+
+// Configuration du router
+Router::init();
