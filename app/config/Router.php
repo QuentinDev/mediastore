@@ -12,6 +12,7 @@ class Router {
         SimpleRouter::group(['prefix' => static::$baseurl, 'exceptionHandler' => 'app\handlers\CustomExceptionHandler'], function() {
             SimpleRouter::get('/', 'HomeController@index');
             SimpleRouter::get('/articles', 'ArticlesController@index');
+            SimpleRouter::get('/article/{id}', 'ArticlesController@detail');
         });
 
 
