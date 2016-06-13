@@ -11,8 +11,11 @@ class Router {
 	{
         SimpleRouter::group(['prefix' => static::$baseurl, 'exceptionHandler' => 'app\handlers\CustomExceptionHandler'], function() {
             SimpleRouter::get('/', 'HomeController@index');
+
             SimpleRouter::get('/login', 'UserController@login');
             SimpleRouter::get('/login', 'UserController@register');
+
+            SimpleRouter::get('/articles', 'ArticlesController@index');
         });
 
 
