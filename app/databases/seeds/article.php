@@ -15,16 +15,6 @@ class Article
 {
     public function run()
     {
-
-        /*
-         *  $table->increments('id');
-            $table->string('nom');
-            $table->text('description');
-            $table->integer('type');
-            $table->integer('prix');
-            $table->string('editeur');
-            $table->timestamps();
-         * */
         Capsule::table('articles')->insert([
             'nom' => 'Star Wars 7',
             'description' => 'Dernier né des films Lucas',
