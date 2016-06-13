@@ -1,8 +1,9 @@
-<?php 
+<?php
+namespace app\models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Order extends Eloquent {
+class User extends Eloquent {
 
 	protected $fillable = ['title'];
 

@@ -1,2 +1,4 @@
 composer.phar
 /vendor/
+.idea
+app/config/Database.php

@@ -3,8 +3,8 @@
         "illuminate/database": "4.1.*"
     },
     "autoload": {
-        "classmap": [
-            "models"
-        ]
+        "psr-4": {
+            "app\\": "app"
+        }
     }
 }
