@@ -3,7 +3,7 @@ namespace app\controllers;
 
 use app\models\User;
 
-class Controller
+class selection_article
 {
     public function __construct()
     {
@@ -20,8 +20,15 @@ class Controller
         //        $order = Order::first();
         //        $order->title = 'Playstation 4';
         //        $order->save();
-        //
         //        dd(Order::first()->toArray());
+        //
+    }
+
+
+    public function selection()
+    {
+        $selection = new \app\databases\user();
+        return $selection::all();
     }
 
 }

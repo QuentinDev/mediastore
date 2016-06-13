@@ -10,29 +10,21 @@ namespace app\databases\migrations;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-
-class User
+class Magasin
 {
     public function up()
     {
-        Capsule::schema()->create('users', function($table)
+        Capsule::schema()->create('magasins', function($table)
         {
             $table->increments('id');
-            $table->string('login')->unique();
-            $table->string('pwd');
-            $table->string('email')->unique();
             $table->string('nom');
-            $table->string('prenom');
             $table->string('adresse');
-            $table->integer('cp');
-            $table->string('tel');
-            $table->integer('grade');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Capsule::schema()->drop('users');
+        Capsule::schema()->drop('magasins');
     }
 }
