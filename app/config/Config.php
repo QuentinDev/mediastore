@@ -1,0 +1,30 @@
+<?php
+
+namespace app\config;
+
+class Config {
+    public static function getAll() {
+        return [
+            // show debug
+            'debug' => true,
+
+            // Configure timezone
+            'timezone' => 'Europe/Paris',
+
+            // config bdd
+            'database' => [
+                'driver' => 'mysql',
+                'host' => 'localhost',
+                'database' => 'mediastore',
+                'username' => 'root',
+                'password' => 'root',
+                'collation' => 'utf8_unicode_ci',
+                'prefix'    => ''
+            ]
+        ];
+    }
+
+    public static function get($key) {
+        return static::getAll()[$key];
+    }
+}

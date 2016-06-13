@@ -7,3 +7,7 @@ renomer app/config/Database.php.sample en Database.php
 composer install
 composer dump-autoload
 ``
+
+
+## vendors
+https://github.com/illuminate/database
