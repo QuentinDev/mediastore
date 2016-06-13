@@ -10,13 +10,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
     <link rel="stylesheet" href="assets/bower_components/semantic/dist/semantic.min.css">
 
-    <!-- CSS -->
-    <!-- Optional theme -->
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="assets/bower_components/semantic/dist/semantic.min.js"></script>
-
 </head>
 <body>
     <div class="ui attached stackable menu">
