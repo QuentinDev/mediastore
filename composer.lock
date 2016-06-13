@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2f60f298d240545fea300deefc5cf238",
-    "content-hash": "b69bf436e668b57a74792a047fcad08a",
+    "hash": "5e6e8f80a628df29a7a18953d1ffc258",
+    "content-hash": "8ecc775da780d5837267370e21c2714c",
     "packages": [
         {
             "name": "illuminate/container",
@@ -262,6 +262,51 @@
                 "time"
             ],
             "time": "2015-11-04 20:07:17"
+        },
+        {
+            "name": "pecee/simple-router",
+            "version": "1.7.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skipperbent/simple-php-router.git",
+                "reference": "6ee172927f895dbfcbe01d4adc8460a6573c5174"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skipperbent/simple-php-router/zipball/6ee172927f895dbfcbe01d4adc8460a6573c5174",
+                "reference": "6ee172927f895dbfcbe01d4adc8460a6573c5174",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pecee\\": "src/Pecee/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Sessingø",
+                    "email": "simon.sessingoe@gmail.com"
+                }
+            ],
+            "description": "Simple, fast PHP router that is easy to get integrated and in almost any project. Heavily inspired by the Laravel router.",
+            "keywords": [
+                "laravel",
+                "pecee",
+                "router",
+                "routing"
+            ],
+            "time": "2016-06-04 16:44:59"
         },
         {
             "name": "symfony/polyfill-mbstring",
