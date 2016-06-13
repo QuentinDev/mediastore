@@ -12,4 +12,9 @@ class ArticlesController extends BaseController
         //print_r($articles);
     }
 
+    public function detail ($id){
+        $article = Article::findOrFail($id);
+        echo $this->render('article/detail.php', compact('article'));
+        //print_r($articles);
+    }
 }
