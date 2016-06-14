@@ -7,5 +7,10 @@
         "psr-4": {
             "app\\": "app"
         }
+    },
+    "scripts": {
+        "migrate_up": "php app/databases/migrate_up.php",
+        "migrate_down": "php app/databases/migrate_down.php",
+        "seed": "php app/databases/seed.php"
     }
 }

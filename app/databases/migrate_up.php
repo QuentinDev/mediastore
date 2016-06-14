@@ -7,6 +7,8 @@ use app\databases\migrations\Article;
 use app\databases\migrations\Commande;
 use app\databases\migrations\Magasin;
 use app\databases\migrations\User;
+use app\databases\migrations\Contient;
+use app\databases\migrations\Stock;
 
 require_once 'vendor/autoload.php';
 
@@ -21,10 +23,13 @@ Database::init(Config::get('database'));
 
 $tables = [];
 
+$tables[] = new User();
 $tables[] = new Article();
 $tables[] = new Commande();
 $tables[] = new Magasin();
-$tables[] = new User();
+$tables[] = new Contient();
+$tables[] = new Stock();
+
 
 foreach ($tables as $table) {
     $table->up();
