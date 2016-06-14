@@ -7,4 +7,10 @@ class Article extends Eloquent {
 
 	public $timestamps = false;
 
+	public function type()
+    {
+        return $this->belongsTo('app\models\type');
+    }
+
+
 }

@@ -23,10 +23,10 @@
         <a class="item">Panier</a>
         <div class="right menu">
           <div class="item">
-            <a class="ui button">Se connecter</a>
+            <a href="<?= \app\helper\Link::url('UserController@login')?>" class="ui button">Se connecter</a>
           </div>
           <div class="item">
-            <a class="ui primary button">S'inscrire</a>
+            <a href="<?= \app\helper\Link::url('UserController@register')?>" class="ui primary button">S'inscrire</a>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ namespace app\helper;
 
 use app\models\User;
 use Carbon\Carbon;
+use app\helper\links;
 
 
 class Auth
@@ -47,5 +48,6 @@ class Auth
 	public static function logout($login = null, $password = null)
 	{
 		session_destroy();
+		header('Location: '.Link::url('UserController@logout'));
 	}
 }
