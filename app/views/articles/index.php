@@ -13,9 +13,9 @@
                     <img src="http://lorempicsum.com/futurama/255/200/<?= rand(1, 5) ?>" alt="" />
                 </div>
                 <div class="content">
-                    <a href="#" class="header"><?= $article->nom ?></a>
+                    <a href="<?= \app\helper\Link::url('article', ['id' => $article->id])?>" class="header"><?= $article->nom ?></a>
                     <div class="meta">
-                        <a class="group" href="#"><?= $article->description ?></a>
+                        <a class="group" href="<?= \app\helper\Link::url('article', ['id' => $article->id])?>"><?= $article->description ?></a>
                     </div>
                 </div>
                 <div class="extra content">
@@ -24,7 +24,7 @@
                         <?= $article->prix ?><i class="euro icon"></i>
                     </div>
                     <div class="type">
-                        <a href="#">type: <?= $article->type ?></a>
+                        <a href="#<?= $article->type ?>">type: <?= $article->type ?></a>
                     </div>
                 </div>
             </div>
