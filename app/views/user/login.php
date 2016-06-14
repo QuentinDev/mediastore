@@ -1,21 +1,16 @@
-<div class="column">
-	<form type="post" action="" class="ui large form">
+<div class="column" style="max-width: 450px; margin: 0px auto; padding: 20px;">
+	<form method="post" action="" class="ui large form">
 		<div class="ui stacked segment">
 		<div class="field">
 			<label>Login</label>
-			<input name="login" placeholder="login" type="text">
+			<input name="login" placeholder="login" type="text" required>
 		</div>
 		<div class="field">
-			<label>Password</label>
-			<input name="lpassword" placeholder="password" type="password">
+			<label>Mot de passe</label>
+			<input name="password" placeholder="Mot de passe" type="password" required>
 		</div>
-		<div class="field">
-			<div class="ui checkbox">
-				<input class="hidden" tabindex="0" type="checkbox">
-				<label>I agree to the Terms and Conditions</label>
-			</div>
-		</div>
-		<button class="ui button" type="submit">Submit</button>
+		<?php app\helper\Html::displayError($error) ?>
+		<button class="ui fluid large teal submit button" type="submit">Submit</button>
 	</div>
 	</form>
 </div>
