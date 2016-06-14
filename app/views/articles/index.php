@@ -1,32 +1,33 @@
-<div class="articles">
-
-    <?php foreach ($articles as $article): ?>
-       <p><?= $article->nom ?></p>
-        <p><?= $article->type ?></p>
-    <?php endforeach; ?>
+<div class="ui vertical stripe segment">
+    <div class="ui three stackable cards container">
+        <?php foreach ($articles as $article): ?>
+            <div class="ui card">
+                <div class="image dimmable">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <a class="ui inverted button" href="#">Ajouter au panier</a>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="http://lorempicsum.com/futurama/255/200/<?= rand(1, 5) ?>" alt="" />
+                </div>
+                <div class="content">
+                    <a href="#" class="header"><?= $article->nom ?></a>
+                    <div class="meta">
+                        <a class="group" href="#"><?= $article->description ?></a>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <div class="time"><?= $article->created_at->diffForHumans() ?></div>
+                    <div class="price">
+                        <?= $article->prix ?><i class="euro icon"></i>
+                    </div>
+                    <div class="type">
+                        <a href="#">type: <?= $article->type ?></a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>
-
-<table class="u-full-width">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Sex</th>
-        <th>Location</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Dave Gamache</td>
-        <td>26</td>
-        <td>Male</td>
-        <td>San Francisco</td>
-    </tr>
-    <tr>
-        <td>Dwayne Johnson</td>
-        <td>42</td>
-        <td>Male</td>
-        <td>Hayward</td>
-    </tr>
-    </tbody>
-</table>
