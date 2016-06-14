@@ -15,11 +15,13 @@ class ArticlesController extends BaseController
 
     public function recherches ($nom){
 
-        $articles = Article::where('nom', 'like', '%'.$nom.'%')
+        $articles = Article::with('Type')->where('nom', 'like', '%'.$nom.'%')
             ->orWhere('description', 'like', '%'.$nom.'%')
-            ->orWhere('type', 'like', '%'.$nom.'%')
-            ->orWhere('prix', 'like', '%'.$nom.'%')
+            ->orWhere('prix', '=', $nom)
             ->orWhere('editeur', 'like', '%'.$nom.'%')
+            ->orWhereHas('Type', function($q) use ($nom) {
+                $q->where('name', 'like', '%'.$nom.'%');
+            })
             ->get();
 
         echo $this->render('articles/recherches.php', compact('articles'));
