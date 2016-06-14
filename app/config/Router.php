@@ -21,6 +21,10 @@ class Router {
             SimpleRouter::get('/articles/nouveautes/{max}', 'ArticlesController@nouveautes', ['as' => 'get_nouveautes']);
             SimpleRouter::get('/articles/{nom}', 'ArticlesController@recherches', ['as' => 'get_search']);
             SimpleRouter::get('/article/{id}', 'ArticlesController@detail', ['as' => 'get_article']);
+
+            SimpleRouter::group(['prefix' => 'admin', 'middleware' => 'app\handlers\AdminHandler'], function() {
+                SimpleRouter::get('/', 'ArticlesController@index', ['as' => 'get_articles_admin']);
+            });
         });
 
         // Démarrage du router + configuration du namespace par default

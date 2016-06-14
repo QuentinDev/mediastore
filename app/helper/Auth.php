@@ -39,11 +39,14 @@ class Auth
 
 	public static function isAuth()
 	{
-		return !empty($_SESSION['user']);
+		return isset($_SESSION['user']);
 	}
 
 	public static function isAdmin()
 	{
-		return $_SESSION['user']->grade;
+		if (self::isAuth()) {
+			return $_SESSION['user']->grade;
+		}
+		return false;
 	}
 }
