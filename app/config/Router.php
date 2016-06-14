@@ -16,7 +16,8 @@ class Router {
             SimpleRouter::get('/login', 'UserController@register');
             
             SimpleRouter::get('/articles', 'ArticlesController@index');
-            SimpleRouter::get('/articles/{champ}/{nom}', 'ArticlesController@recherches');
+            SimpleRouter::get('/articles/nouveautes/{max}', 'ArticlesController@nouveautes');
+            SimpleRouter::get('/articles/{nom}', 'ArticlesController@recherches');
             SimpleRouter::get('/article/{id}', 'ArticlesController@detail');
         });
 
