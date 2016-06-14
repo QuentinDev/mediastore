@@ -8,6 +8,7 @@
 
 namespace app\databases\seeds;
 
+use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class User
@@ -23,8 +24,10 @@ class User
             'tel' => '03033033',
             'email' => 'admin@gmail.com',
             'login' => 'admin',
-            'pwd' => md5('admin'),
-            'grade' => '1'
+            'pwd' => hash('sha256', 'admin'),
+            'grade' => '1',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         Capsule::table('users')->insert([
@@ -35,8 +38,10 @@ class User
             'tel' => '03033033',
             'email' => 'user@gmail.com',
             'login' => 'user',
-            'pwd' => md5('user'),
-            'grade' => '0'
+            'pwd' => hash('sha256', 'user'),
+            'grade' => '0',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
     }
 }

@@ -1,9 +1,12 @@
 <?php
 namespace app\controllers;
 
+use app\config\Router;
+
 abstract class BaseController
 {
     function render($file, $variables = []) {
+        $variables['base_url'] = Router::$baseurl;
         extract($variables);
         ob_start();
 
