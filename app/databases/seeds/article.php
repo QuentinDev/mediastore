@@ -15,44 +15,45 @@ class Article
 {
     public function run()
     {
+        $now = Carbon::now();
         Capsule::table('articles')->insert([
             'nom' => 'Star Wars 7',
             'description' => 'Dernier né des films Lucas',
-            'type' => 'DVD',
+            'type_id' => 1,
             'prix' => '25',
             'editeur' => 'Lucas arts',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
 
         Capsule::table('articles')->insert([
             'nom' => 'Gods of Egypt',
             'description' => 'Fantasy',
-            'type' => 'DVD',
+            'type_id' => 1,
             'prix' => '25',
             'editeur' => 'JB films',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
 
         Capsule::table('articles')->insert([
             'nom' => 'Star Wars 1',
             'description' => 'Le premier né des films Lucas',
-            'type' => 'DVD',
+            'type_id' => 1,
             'prix' => '25',
             'editeur' => 'Lucas arts',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
 
         Capsule::table('articles')->insert([
             'nom' => 'Civil War',
             'description' => 'SF',
-            'type' => 'DVD',
+            'type_id' => 1,
             'prix' => '25',
             'editeur' => 'Marvel',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
     }
 }

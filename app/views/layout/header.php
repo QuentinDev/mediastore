@@ -16,31 +16,27 @@
     <script src="assets/bower_components/semantic/dist/semantic.min.js"></script>
 </head>
 <body>
-    <div class="ui attached stackable menu">
-  <div class="ui container">
-    <a class="item">
-      <i class="home icon"></i> Home
-    </a>
-    <a class="item">
-      <i class="grid layout icon"></i> Browse
-    </a>
-    <a class="item">
-      <i class="mail icon"></i> Messages
-    </a>
-    <div class="ui simple dropdown item">
-      More
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item"><i class="edit icon"></i> Edit Profile</a>
-        <a class="item"><i class="globe icon"></i> Choose Language</a>
-        <a class="item"><i class="settings icon"></i> Account Settings</a>
+    <div class="ui large top hidden menu">
+      <div class="ui container">
+        <a class="active item">Accueil</a>
+        <a class="item">Panier</a>
+        <div class="right menu">
+          <div class="item">
+            <a class="ui button">Se connecter</a>
+          </div>
+          <div class="item">
+            <a class="ui primary button">S'inscrire</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="right item">
-      <div class="ui input"><input placeholder="Search..." type="text"></div>
-    </div>
-  </div>
-</div>
 
+    <!-- Sidebar Menu -->
+    <div class="ui vertical inverted sidebar menu">
+      <a class="active item">Accueil</a>
+      <a class="item">Panier</a>
+      <a class="item">Se connecter</a>
+      <a class="item">S'inscrire</a>
+    </div>
 
     <div class="ui center aligned container">

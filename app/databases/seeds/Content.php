@@ -9,7 +9,7 @@
 namespace app\seeds;
 
 
-class Contient
+class Content
 {
 
 }
