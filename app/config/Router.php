@@ -12,6 +12,7 @@ class Router {
 
             SimpleRouter::get('/login', 'UserController@login', ['as' => 'get_login']);
             SimpleRouter::post('/login', 'UserController@login', ['as' => 'post_login']);
+            SimpleRouter::get('/logout', 'UserController@logout');
             SimpleRouter::get('/register', 'UserController@register', ['as' => 'get_register']);
             SimpleRouter::post('/register', 'UserController@register', ['as' => 'post_register']);
 

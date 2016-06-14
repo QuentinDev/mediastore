@@ -37,17 +37,13 @@ class Auth
 		$user->save();
 	}
 
-	public static function isAuth($login = null, $password = null)
+	public static function isAuth()
 	{
-		if(!empty($_SESSION['user'])){
-			return true;
-		}
-		return false;
+		return !empty($_SESSION['user']);
 	}
 
-	public static function logout($login = null, $password = null)
+	public static function isAdmin()
 	{
-		session_destroy();
-		header('Location: '.Link::url('UserController@logout'));
+		return $_SESSION['user']->grade;
 	}
 }
