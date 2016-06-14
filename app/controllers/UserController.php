@@ -19,6 +19,11 @@ class UserController extends BaseController
 		echo $this->render('user/login.php', compact('error'));
     }
 
+    public function logout() {
+        session_destroy();
+		header('Location: '.Link::url('UserController@login'));
+    }
+
     public function register() {
         $error = null;
 		if(isset($_POST['login']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel']))

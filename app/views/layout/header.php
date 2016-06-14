@@ -18,19 +18,35 @@
 </head>
 <body>
     <div class="ui large top hidden menu">
-      <div class="ui container">
-        <a class="active item">Accueil</a>
-        <a class="item">Panier</a>
-        <div class="right menu">
-          <div class="item">
-            <a href="<?= \app\helper\Link::url('UserController@login')?>" class="ui button">Se connecter</a>
-          </div>
-          <div class="item">
-            <a href="<?= \app\helper\Link::url('UserController@register')?>" class="ui primary button">S'inscrire</a>
-          </div>
+        <div class="ui container">
+            <a href="<?= \app\helper\Link::url('HomeController@index')?>" class="item">Accueil</a> <!-- class active -->
+            <a href="<?= \app\helper\Link::url('ArticlesController@index')?>" class="item">Articles</a>
+            <a class="item">Panier</a>
+            <div class="right menu">
+                <?php if(app\helper\auth::isAuth()): ?>
+                    <div class="item">
+                        <p>Bonjour <?= $_SESSION['user']->prenom; ?></p>
+                    </div>
+                    <div class="item">
+                        <a href="<?= \app\helper\Link::url('UserController@logout')?>" class="ui button">Déconnexion</a>
+                    </div>
+                    <?php if(app\helper\auth::isAdmin()): ?>
+                        <div class="item">
+                            <a href="<?= \app\helper\Link::url('UserController@login')?>" class="ui button">Backoffice</a>
+                        </div>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="item">
+                        <a href="<?= \app\helper\Link::url('UserController@login')?>" class="ui button">Se connecter</a>
+                    </div>
+                    <div class="item">
+                        <a href="<?= \app\helper\Link::url('UserController@register')?>" class="ui primary button">S'inscrire</a>
+                    </div>
+                <?php endif; ?>
+
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
     <!-- Sidebar Menu -->
     <div class="ui vertical inverted sidebar menu">
