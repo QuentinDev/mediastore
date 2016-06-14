@@ -8,7 +8,10 @@ use app\helper\Link;
 class AdminController extends BaseController
 {
     public function index() {
-
+        if(Auth::isAdmin())
+        {
+            echo $this->render('admin/index.php');
+        }
     }
 
 }
