@@ -22,24 +22,16 @@ $(document)
             .sidebar('attach events', '.toc.item')
         ;
 
-        function doSearch() {
-            var text = $('#search').val();
-
-            //Si le texte de la recherche est vide alors on ne fait rien.
-            if (text.length == 0)
-                return;
-
-            window.location.pathname = $('base').attr('href') + 'articles/' + text;;
-        }
-
-
         $('#search').keypress(function(e) {
             if(e.which == 13) {
-                doSearch();
+                var text = $('#search').val();
+
+                //Si le texte de la recherche est vide alors on ne fait rien.
+                if (text.length == 0)
+                    return;
+
+                window.location.pathname = $('base').attr('href') + 'articles/' + text;
             }
-        });
-        $('#sendsearch').click(function() {
-            doSearch();
         });
 
     })

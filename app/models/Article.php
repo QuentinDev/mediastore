@@ -12,5 +12,14 @@ class Article extends Eloquent {
         return $this->belongsTo('app\models\type');
     }
 
+    public function magasins()
+    {
+        return $this->belongsToMany('app\models\magasin')
+            ->withPivot('quantity');
+    }
 
+    public function commandes()
+    {
+        return $this->belongsToMany('app\models\commande');
+    }
 }

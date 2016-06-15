@@ -44,9 +44,11 @@
                     </div>
                 <?php endif; ?>
                 <div class="item">
-                    <div class="ui icon input">
-                        <input name="search" type="text" id="search" placeholder="Recherche(s) article(s)...">
-                        <button id="sendsearch"><i class="inverted circular search link icon"></i></button>
+                    <div class="ui remote search">
+                        <div class="ui icon input">
+                            <input class="prompt" name="search" id="search" type="text" placeholder="Recherche(s) article(s)..." autocomplete="off">
+                            <i class="search icon"></i>
+                        </div>
                     </div>
                 </div>
                 </div>
