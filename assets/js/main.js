@@ -22,5 +22,21 @@ $(document)
             .sidebar('attach events', '.toc.item')
         ;
 
+        function doSearch() {
+            var text = $('#search').val();
+            window.location.pathname = $('base').attr('href') + 'articles/' + text;;
+            console.log(text)
+        }
+
+
+        $('#search').keypress(function(e) {
+            if(e.which == 13) {
+                doSearch();
+            }
+        });
+        $('#sendsearch').click(function() {
+            doSearch();
+        });
+
     })
 ;
