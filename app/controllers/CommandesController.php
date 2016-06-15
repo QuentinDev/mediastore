@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\helper\Auth;
+use app\helper\Card;
 use app\helper\Redirect;
 use app\models\Cart;
 use app\models\Commande;
@@ -23,6 +24,11 @@ class CommandesController extends BaseController
     }
 
     public function saveAdd() {
+        if (!Card::checkCard()) {
+            Redirect::prev();
+        }
+
+
         $cart = new Cart();
         $commande = new Commande();
         $commande->user_id = Auth::getUser()->id;
@@ -35,7 +41,6 @@ class CommandesController extends BaseController
         foreach ($cart->getCart() as $item)
             $commande->articles()->attach($item->id, ['quantity' => $item->quantity]);
 
-        $inputs = Request::getInstance()->getInput()->all();
         $user = User::findOrFail(Auth::getUser()->id);
         $user->nom = Request::getInstance()->getInput()->get('nom');
         $user->prenom = Request::getInstance()->getInput()->get('prenom');
@@ -43,6 +48,8 @@ class CommandesController extends BaseController
         $user->adresse = Request::getInstance()->getInput()->get('adresse');
         $user->tel = Request::getInstance()->getInput()->get('tel');
         $user->save();
+
+        $cart->clearCart();
 
         Redirect::url('CommandesController@index');
     }

@@ -34,5 +34,29 @@ $(document)
             }
         });
 
-    })
+
+        // gestion de la validation de la commande
+        $('#cardCheck').find('input').keyup(function(e) {
+            var value = $(this).val();
+            $.get($('base').attr('href') + 'json/check_card',
+                $('#addCommande').serializeObject(),
+                function(data) {
+                    var selector = $('#cardCheck').find('#error');
+                    var button = $('#submit');
+                    if (!data) {
+                        selector.addClass('show').removeClass('hide');
+                        button.prop('disabled', true);
+                    }
+                    else {
+                        selector.addClass('hide').removeClass('show');
+                        button.prop('disabled', false);
+                    }
+                }
+            );
+        });
+
+        $('.show-modal').click(function() {
+            $('.ui.modal#' + $(this).data('id')).modal('show');
+        });
+    });
 ;

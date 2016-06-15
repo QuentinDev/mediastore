@@ -12,4 +12,8 @@ class Commande extends Eloquent {
 		return $this->belongsToMany('app\models\article')
             ->withPivot('quantity');
 	}
+
+	public function user() {
+		return $this->belongsTo('app\models\user');
+	}
 }

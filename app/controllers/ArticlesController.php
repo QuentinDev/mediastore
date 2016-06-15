@@ -36,10 +36,10 @@ class ArticlesController extends BaseController
     }
 
     //Recherche des nouveaux articles sr les critères:  1) n (paramètrable) derniers articles OU 2) articles de -1 mois
-    public function nouveautes ($max){
+    public function nouveautes (){
         $articles = Article::where('created_at', '>=', Carbon::now()->subMonth())->get();
         if (count($articles) == 0)
-            $articles = Article::orderBy('created_at', 'asc')->take($max)->get();
+            $articles = Article::orderBy('created_at', 'asc')->take(20)->get();
         echo $this->render('articles/nouveautes.php', compact('articles'));
     }
 

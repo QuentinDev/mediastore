@@ -75,6 +75,10 @@ class Cart {
         return isset($_SESSION['cart'])? $_SESSION['cart'] : [];
     }
 
+    public function clearCart() {
+        $_SESSION['cart'] = [];
+    }
+
     public function getTotalPrice() {
         $price = 0;
         foreach ($this->getCart() as $item) {
