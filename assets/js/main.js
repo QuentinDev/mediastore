@@ -24,11 +24,12 @@ $(document)
 
         function doSearch() {
             var text = $('#search').val();
-            if (text.length ==0)
+
+            //Si le texte de la recherche est vide alors on ne fait rien.
+            if (text.length == 0)
                 return;
 
-            window.location.pathname = $('base').attr('href') + 'articles/' + text;
-            console.log(text)
+            window.location.pathname = $('base').attr('href') + 'articles/' + text;;
         }
 
 

@@ -7,12 +7,15 @@ use Carbon\Carbon;
 
 class ArticlesController extends BaseController
 {
-    //Page d'accueil avec tous les articles
+
+    //Page d'accueil des articles ==> affiche tous les articles
+
     public function index (){
         $articles = Article::all();
         echo $this->render('articles/index.php', compact('articles'));
-        //print_r($articles);
+
     }
+
 
     //Recherche des articles sur un des critères ci-dessous. Soit nom, ou description, ou ...
     public function recherches ($nom){
@@ -38,8 +41,8 @@ class ArticlesController extends BaseController
         if (count($articles) == 0)
             $articles = Article::orderBy('created_at', 'asc')->take($max)->get();
         echo $this->render('articles/nouveautes.php', compact('articles'));
-        //print_r($articles);
     }
+
 
     //Recherche d'un article sur sa clef $id
     public function detail ($id){
