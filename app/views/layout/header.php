@@ -21,7 +21,7 @@
         <div class="ui container">
             <a href="<?= \app\helper\Link::url('HomeController@index')?>" class="item">Accueil</a> <!-- class active -->
             <a href="<?= \app\helper\Link::url('ArticlesController@index')?>" class="item">Articles</a>
-            <a class="item">Panier</a>
+            <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item">Panier</a>
             <div class="right menu">
                 <?php if(app\helper\auth::isAuth()): ?>
                     <div class="item">
