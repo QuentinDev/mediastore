@@ -43,7 +43,12 @@
                         <a href="<?= \app\helper\Link::url('UserController@register')?>" class="ui primary button">S'inscrire</a>
                     </div>
                 <?php endif; ?>
-
+                <div class="item">
+                    <div class="ui icon input">
+                        <input name="search" type="text" id="search" placeholder="Recherche(s)...">
+                        <button id="sendsearch"><i class="inverted circular search link icon"></i></button>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -54,6 +59,7 @@
       <a class="item">Panier</a>
       <a class="item">Se connecter</a>
       <a class="item">S'inscrire</a>
+      <a class="item">Recherche</a>
     </div>
 
     <div class="ui center aligned container">

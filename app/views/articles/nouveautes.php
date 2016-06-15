@@ -13,9 +13,9 @@
                     <img src="http://lorempicsum.com/futurama/255/200/<?= rand(1, 5) ?>" alt="" />
                 </div>
                 <div class="content">
-                    <a href="<?= \app\helper\Link::url('article', ['id' => $article->id])?>" class="header"><?= $article->nom ?></a>
+                    <a href="<?= \app\helper\Link::url('ArticlesController@detail', ['id' => $article->id])?>" class="header"><?= $article->nom ?></a>
                     <div class="meta">
-                        <a class="group" href="<?= \app\helper\Link::url('article', ['id' => $article->id])?>"><?= $article->description ?></a>
+                        <a class="group" href="<?= \app\helper\Link::url('ArticlesController@detail', ['id' => $article->id])?>"><?= $article->description ?></a>
                     </div>
                 </div>
                 <div class="extra content">
