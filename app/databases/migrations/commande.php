@@ -18,8 +18,8 @@ class Commande
         {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('nom');
-            $table->string('statut');
+            $table->enum('status', array('en préparation', 'prête', 'envoyée'))->default('en préparation');
+            $table->dateTime('delivery_time');
             $table->timestamps();
         });
 

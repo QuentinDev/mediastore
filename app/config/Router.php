@@ -27,6 +27,10 @@ class Router {
                 SimpleRouter::get('/panier/add/{id}', 'PanierController@add');
                 SimpleRouter::get('/panier/remove/{id}', 'PanierController@remove');
                 SimpleRouter::post('/panier/update/{id}', 'PanierController@update');
+
+                SimpleRouter::get('/commandes', 'CommandesController@index');
+                SimpleRouter::get('/commandes/add', 'CommandesController@add');
+                SimpleRouter::post('/commandes/add', 'CommandesController@saveAdd');
             });
 
             SimpleRouter::group(['prefix' => 'admin', 'middleware' => 'app\handlers\AdminHandler'], function() {

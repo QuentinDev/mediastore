@@ -49,4 +49,11 @@ class Auth
 		}
 		return false;
 	}
+
+    public static function getUser() {
+        if (self::isAuth()) {
+            return User::findOrFail($_SESSION['user']->id);
+        }
+        return new User;
+    }
 }

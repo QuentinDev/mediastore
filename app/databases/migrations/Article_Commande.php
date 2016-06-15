@@ -19,6 +19,7 @@ class Article_Commande
             $table->increments('id');
             $table->integer('commande_id')->unsigned();
             $table->integer('article_id')->unsigned();
+            $table->integer('quantity');
         });
 
         Capsule::schema()->table('article_commande', function($table) {

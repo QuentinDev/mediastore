@@ -8,6 +8,7 @@ class HomeController extends BaseController
     public function index() {
         $articles = Article::findOrFail(1);
 
+        //dd($articles->getQuantity());
         //dd($articles->magasins[0]->pivot->quantity);
         //dd($articles->commandes);
 
