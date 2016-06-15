@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\helper\Redirect;
 use app\models\User;
 use app\helper\Auth;
 use app\helper\Link;
@@ -12,7 +13,7 @@ class UserController extends BaseController
 		if(isset($_POST['login']) && isset($_POST['password']))
 		{
             if(Auth::auth($_POST['login'], $_POST['password'])) {
-                  header('Location: '.Link::url('HomeController'));
+                Redirect::url('HomeController@index');
             }
             $error = "Identifiant ou mot de passe incorrect.";
 		}
@@ -21,7 +22,7 @@ class UserController extends BaseController
 
     public function logout() {
         session_destroy();
-		header('Location: '.Link::url('UserController@login'));
+        Redirect::url('UserController@login');
     }
 
     public function register() {
