@@ -20,6 +20,27 @@ class Article extends Eloquent {
 
     public function commandes()
     {
-        return $this->belongsToMany('app\models\commande');
+        return $this->belongsToMany('app\models\commande')
+            ->withPivot('quantity');
+    }
+
+    public function getQuantity() {
+        $quantity = 0;
+
+        foreach ($this->magasins as $magasin) {
+            $quantity += $magasin->pivot->quantity;
+        }
+
+        return $quantity;
+    }
+
+    public static function getQuantityForId($id) {
+        $quantity = 0;
+
+        foreach (Article::findOrFail($id)->magasins as $magasin) {
+            $quantity += $magasin->pivot->quantity;
+        }
+
+        return $quantity;
     }
 }

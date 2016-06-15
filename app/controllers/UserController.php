@@ -13,7 +13,7 @@ class UserController extends BaseController
 		if(isset($_POST['login']) && isset($_POST['password']))
 		{
             if(Auth::auth($_POST['login'], $_POST['password'])) {
-                Redirect::url('HomeController@index');
+                Redirect::url('ArticlesController@nouveautes');
             }
             $error = "Identifiant ou mot de passe incorrect.";
 		}
