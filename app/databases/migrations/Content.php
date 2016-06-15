@@ -22,7 +22,7 @@ class Content
         });
 
         Capsule::schema()->table('content', function($table) {
-            $table->foreign('commande_id')->references('id')->on('users')
+            $table->foreign('commande_id')->references('id')->on('commandes')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

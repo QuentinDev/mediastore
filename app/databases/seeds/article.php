@@ -39,8 +39,8 @@ class Article
         Capsule::table('articles')->insert([
             'nom' => 'Star Wars 1',
             'description' => 'Le premier né des films Lucas',
-            'type_id' => 1,
-            'prix' => '25',
+            'type_id' => 2,
+            'prix' => '20',
             'editeur' => 'Lucas arts',
             'created_at' => $now,
             'updated_at' => $now,
@@ -49,8 +49,8 @@ class Article
         Capsule::table('articles')->insert([
             'nom' => 'Civil War',
             'description' => 'SF',
-            'type_id' => 1,
-            'prix' => '25',
+            'type_id' => 2,
+            'prix' => '30',
             'editeur' => 'Marvel',
             'created_at' => $now,
             'updated_at' => $now,

@@ -45,7 +45,7 @@
                 <?php endif; ?>
                 <div class="item">
                     <div class="ui icon input">
-                        <input name="search" type="text" id="search" placeholder="Recherche(s)...">
+                        <input name="search" type="text" id="search" placeholder="Recherche(s) article(s)...">
                         <button id="sendsearch"><i class="inverted circular search link icon"></i></button>
                     </div>
                 </div>
