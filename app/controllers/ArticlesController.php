@@ -13,6 +13,9 @@ class ArticlesController extends BaseController
     }
 
     public function recherches ($nom){
+        
+        if(isset($_POST['search']))
+            $nom=$_POST['search'];
 
         $articles = Article::with('Type')->where('nom', 'like', '%'.$nom.'%')
             ->orWhere('description', 'like', '%'.$nom.'%')

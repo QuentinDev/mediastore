@@ -21,7 +21,7 @@
         <div class="ui container">
             <a href="<?= \app\helper\Link::url('HomeController@index')?>" class="item">Accueil</a> <!-- class active -->
             <a href="<?= \app\helper\Link::url('ArticlesController@index')?>" class="item">Articles</a>
-            <a class="item">Panier</a>
+            <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item">Panier</a>
             <div class="right menu">
                 <?php if(app\helper\auth::isAuth()): ?>
                     <div class="item">
@@ -43,7 +43,12 @@
                         <a href="<?= \app\helper\Link::url('UserController@register')?>" class="ui primary button">S'inscrire</a>
                     </div>
                 <?php endif; ?>
-
+                <div class="item">
+                    <div class="ui icon input">
+                        <input name="search" type="text" id="search" placeholder="Recherche(s)...">
+                        <button id="sendsearch"><i class="inverted circular search link icon"></i></button>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -54,6 +59,7 @@
       <a class="item">Panier</a>
       <a class="item">Se connecter</a>
       <a class="item">S'inscrire</a>
+      <a class="item">Recherche</a>
     </div>
 
     <div class="ui center aligned container">

@@ -9,10 +9,10 @@ use Pecee\Http\Middleware;
 use Pecee\Http\Middleware\IMiddleware;
 use Pecee\Http\Request;
 
-class AdminHandler implements IMiddleware {
+class AuthHandler implements IMiddleware {
     public function handle(Request $request)
     {
-        if(!Auth::isAdmin()) {
+        if(!Auth::isAuth()) {
             Redirect::url('UserController@login');
         }
     }
