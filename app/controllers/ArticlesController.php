@@ -7,12 +7,14 @@ use Carbon\Carbon;
 
 class ArticlesController extends BaseController
 {
+    //Page d'accueil avec tous les articles
     public function index (){
         $articles = Article::all();
         echo $this->render('articles/index.php', compact('articles'));
         //print_r($articles);
     }
 
+    //Recherche des articles sur un des critères ci-dessous. Soit nom, ou description, ou ...
     public function recherches ($nom){
         
         if(isset($_POST['search']))
@@ -30,6 +32,7 @@ class ArticlesController extends BaseController
         echo $this->render('articles/recherches.php', compact('articles'));
     }
 
+    //Recherche des nouveaux articles sr les critères:  1) n (paramètrable) derniers articles OU 2) articles de -1 mois
     public function nouveautes ($max){
         $articles = Article::where('created_at', '>=', Carbon::now()->subMonth())->get();
         if (count($articles) == 0)
@@ -38,6 +41,7 @@ class ArticlesController extends BaseController
         //print_r($articles);
     }
 
+    //Recherche d'un article sur sa clef $id
     public function detail ($id){
         $article = Article::findOrFail($id);
         echo $this->render('article/detail.php', compact('article'));

@@ -24,7 +24,10 @@ $(document)
 
         function doSearch() {
             var text = $('#search').val();
-            window.location.pathname = $('base').attr('href') + 'articles/' + text;;
+            if (text.length ==0)
+                return;
+
+            window.location.pathname = $('base').attr('href') + 'articles/' + text;
             console.log(text)
         }
 
