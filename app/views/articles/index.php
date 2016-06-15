@@ -24,7 +24,7 @@
                         <?= $article->prix ?><i class="euro icon"></i>
                     </div>
                     <div class="type">
-                        <a href="#<?= $article->type ?>">type: <?= $article->type->name ?></a>
+                        <a href="#<?= $article->type->name ?>">type: <?= $article->type->name ?></a>
                     </div>
                 </div>
             </div>
