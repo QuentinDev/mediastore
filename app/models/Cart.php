@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Carbon\Carbon;
+
 class Cart {
 
     protected $sess = null;
@@ -73,12 +75,26 @@ class Cart {
         return isset($_SESSION['cart'])? $_SESSION['cart'] : [];
     }
 
+    public function clearCart() {
+        $_SESSION['cart'] = [];
+    }
+
     public function getTotalPrice() {
         $price = 0;
         foreach ($this->getCart() as $item) {
-            $price += $item['quantity'] * $item['prix_produit'];
+            $price += $item['quantity'] * $item['prix'];
         }
         return $price;
+    }
+
+    public function getDateLivraison() {
+        $drp = 1;
+        foreach ($this->getCart() as $item) {
+            if (Article::getQuantityForId($item['id']) < $item['quantity'])
+                $drp++;
+        }
+        $drp = ($drp != 1) ? 3 : 1;
+        return Carbon::now()->addDays(2 +  $drp);
     }
 
     protected function setSessionCart() {

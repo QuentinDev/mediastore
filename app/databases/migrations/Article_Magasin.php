@@ -10,11 +10,11 @@ namespace app\databases\migrations;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class Stock
+class Article_Magasin
 {
     public function up()
     {
-        Capsule::schema()->create('Stock', function($table)
+        Capsule::schema()->create('article_magasin', function($table)
         {
             $table->increments('id');
             $table->integer('article_id')->unsigned();
@@ -22,13 +22,13 @@ class Stock
             $table->integer('quantity')->unsigned();
         });
 
-        Capsule::schema()->table('Stock', function($table) {
+        Capsule::schema()->table('article_magasin', function($table) {
             $table->foreign('article_id')->references('id')->on('articles')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
 
-        Capsule::schema()->table('Stock', function($table) {
+        Capsule::schema()->table('article_magasin', function($table) {
             $table->foreign('magasin_id')->references('id')->on('magasins')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
@@ -38,7 +38,7 @@ class Stock
 
     public function down()
     {
-        Capsule::schema()->drop('Stock');
+        Capsule::schema()->drop('article_magasin');
     }
 
 }

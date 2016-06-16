@@ -6,10 +6,10 @@
  * Time: 10:39
  */
 
-namespace app\seeds;
+namespace app\databases\seeds;
 
 
-class Content
+class Article_Commande
 {
 
 }

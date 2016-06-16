@@ -22,21 +22,41 @@ $(document)
             .sidebar('attach events', '.toc.item')
         ;
 
-        function doSearch() {
-            var text = $('#search').val();
-            window.location.pathname = $('base').attr('href') + 'articles/' + text;;
-            console.log(text)
-        }
-
-
         $('#search').keypress(function(e) {
             if(e.which == 13) {
-                doSearch();
+                var text = $('#search').val();
+
+                //Si le texte de la recherche est vide alors on ne fait rien.
+                if (text.length == 0)
+                    return;
+
+                window.location.pathname = $('base').attr('href') + 'articles/' + text;
             }
         });
-        $('#sendsearch').click(function() {
-            doSearch();
+
+
+        // gestion de la validation de la commande
+        $('#cardCheck').find('input').keyup(function(e) {
+            var value = $(this).val();
+            $.get($('base').attr('href') + 'json/check_card',
+                $('#addCommande').serializeObject(),
+                function(data) {
+                    var selector = $('#cardCheck').find('#error');
+                    var button = $('#submit');
+                    if (!data) {
+                        selector.addClass('show').removeClass('hide');
+                        button.prop('disabled', true);
+                    }
+                    else {
+                        selector.addClass('hide').removeClass('show');
+                        button.prop('disabled', false);
+                    }
+                }
+            );
         });
 
-    })
+        $('.show-modal').click(function() {
+            $('.ui.modal#' + $(this).data('id')).modal('show');
+        });
+    });
 ;

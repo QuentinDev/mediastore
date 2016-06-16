@@ -17,6 +17,7 @@ class Article
     {
         $now = Carbon::now();
         Capsule::table('articles')->insert([
+            'id' => 1,
             'nom' => 'Star Wars 7',
             'description' => 'Dernier né des films Lucas',
             'type_id' => 1,
@@ -27,6 +28,7 @@ class Article
         ]);
 
         Capsule::table('articles')->insert([
+            'id' => 2,
             'nom' => 'Gods of Egypt',
             'description' => 'Fantasy',
             'type_id' => 1,
@@ -37,20 +39,22 @@ class Article
         ]);
 
         Capsule::table('articles')->insert([
+            'id' => 3,
             'nom' => 'Star Wars 1',
             'description' => 'Le premier né des films Lucas',
-            'type_id' => 1,
-            'prix' => '25',
+            'type_id' => 2,
+            'prix' => '20',
             'editeur' => 'Lucas arts',
             'created_at' => $now,
             'updated_at' => $now,
         ]);
 
         Capsule::table('articles')->insert([
+            'id' => 4,
             'nom' => 'Civil War',
             'description' => 'SF',
-            'type_id' => 1,
-            'prix' => '25',
+            'type_id' => 2,
+            'prix' => '30',
             'editeur' => 'Marvel',
             'created_at' => $now,
             'updated_at' => $now,

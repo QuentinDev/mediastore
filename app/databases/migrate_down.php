@@ -8,8 +8,8 @@ use app\databases\migrations\Commande;
 use app\databases\migrations\Magasin;
 use app\databases\migrations\User;
 use app\databases\migrations\Type;
-use app\databases\migrations\Content;
-use app\databases\migrations\Stock;
+use app\databases\migrations\Article_Commande;
+use app\databases\migrations\Article_Magasin;
 
 require_once 'vendor/autoload.php';
 
@@ -24,10 +24,10 @@ Database::init(Config::get('database'));
 
 $tables = [];
 
-$tables[] = new Content();
-$tables[] = new Stock();
-$tables[] = new Type();
+$tables[] = new Article_Commande();
+$tables[] = new Article_Magasin();
 $tables[] = new Article();
+$tables[] = new Type();
 $tables[] = new Commande();
 $tables[] = new Magasin();
 $tables[] = new User();
