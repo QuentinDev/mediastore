@@ -4,10 +4,7 @@ namespace app\controllers;
 use app\models\User;
 use app\models\Article;
 use app\models\Type;
-use Carbon\Carbon;
 use app\helper\Auth;
-use app\helper\Link;
-use app\helper\UserHelper;
 use app\helper\ArticleHelper;
 use app\helper\Redirect;
 
@@ -30,8 +27,7 @@ class AdminController extends BaseController
             $target_dir = "assets/uploads/articles/";
             $_FILES["articleImg"]["name"] = "{$id}.png";
             $target_file = $target_dir . basename($_FILES["articleImg"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
             $check = getimagesize($_FILES["articleImg"]["tmp_name"]);
             if($check !== false) {
                 move_uploaded_file($_FILES['articleImg']['tmp_name'], $target_file);
@@ -106,8 +102,7 @@ class AdminController extends BaseController
                     $target_dir = "assets/uploads/articles/";
                     $_FILES["articleImg"]["name"] = "{$article->id}.png";
                     $target_file = $target_dir . basename($_FILES["articleImg"]["name"]);
-                    $uploadOk = 1;
-                    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
                     $check = getimagesize($_FILES["articleImg"]["tmp_name"]);
                     if($check !== false) {
                         move_uploaded_file($_FILES['articleImg']['tmp_name'], $target_file);

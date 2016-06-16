@@ -2,7 +2,7 @@
     <div class="ui three stackable cards container">
         <?= app\helper\Auth::getFlash(); ?>
         <?php if (count($commandes) == 0) : ?>
-            <h3>Pas de commandes</h3>
+            <h3>Pas de commande</h3>
         <?php else: ?>
             <table class="ui selectable single line table">
                 <thead>
@@ -16,7 +16,7 @@
                 <tbody>
                     <?php foreach ($commandes as $key => $item): ?>
                     <tr class="show-modal" data-id="<?= $key ?>">
-                        <td><?= $key ?></td>
+                        <td><?= $key +1 ?></td>
                         <td><?= $item->delivery_time ?></td>
                         <td><?= $item->created_at ?></td>
                         <td><?= $item->status ?></td>
@@ -29,7 +29,7 @@
                 <div class="ui modal" id="<?= $key ?>">
                     <i class="close icon"></i>
                     <div class="header">
-                        Facture <?= $key ?>
+                        Facture <?= $key + 1 ?>
                     </div>
                     <div class="image content">
                         <div class="description">
@@ -48,7 +48,7 @@
                                 <?php foreach ($item->articles as $article): ?>
                                     <div class="item">
                                         <div class="image">
-                                            <img src="/images/wireframe/image.png">
+                                            <img src="<?= \app\helper\Html::getImgForArticle($article->id) ?>">
                                         </div>
                                         <div class="content">
                                             <a class="header"><?= $article->nom ?> (<?= $article->type->name ?>)</a>
