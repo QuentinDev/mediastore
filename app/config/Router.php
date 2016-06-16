@@ -8,6 +8,7 @@ class Router {
 	public static function init()
 	{
         SimpleRouter::group(['prefix' => static::$baseurl, 'exceptionHandler' => 'app\handlers\CustomExceptionHandler'], function() {
+            SimpleRouter::get('/nouveautes', 'ArticlesController@nouveautes');
             SimpleRouter::get('/', 'ArticlesController@nouveautes');
 
             SimpleRouter::get('/login', 'UserController@login');
