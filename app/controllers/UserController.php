@@ -24,22 +24,36 @@ class UserController extends BaseController
     }
 
     public function register() {
-        if(isset($_POST['login']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel'])) {
-            if(Auth::register($_POST['login'],$_POST['nom'],$_POST['prenom'],$_POST['password'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['tel'])) {
-                if(Auth::auth($_POST['login'], $_POST['password'])) {
-                    Redirect::url('ArticlesController@nouveautes');
-                }
+        if(isset($_POST['login']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel'])) {
+            if(Auth::loginExists($_POST['login'])){
+                Auth::setFlash("Ce login existe déjà", "error");
+            }elseif(Auth::register($_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['email'], $_POST['adresse'], $_POST['cp'], $_POST['tel']) && Auth::auth($_POST['login'], $_POST['password'])) {
+                Auth::setFlash("Bienvenue sur Medi@Store,".$_POST['prenom'], "positive");
+                Redirect::url('ArticlesController@nouveautes');
+                exit();
             }else{
-                Auth::setFlash("Une erreur est survenue, veuillez réessayer ultérieurement", "error");
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
+
+        // if(isset($_POST['login']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel'])) {
+        //     if(Auth::register($_POST['login'],$_POST['nom'],$_POST['prenom'],$_POST['password'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['tel'])) {
+        //         if(Auth::auth($_POST['login'], $_POST['password'])) {
+        //             Redirect::url('ArticlesController@nouveautes');
+        //         }
+        //     }else{
+        //         Auth::setFlash("Une erreur est survenue, veuillez réessayer ultérieurement", "error");
+        //     }
+        // }
         echo $this->render('user/register.php');
     }
 
     public function profile() {
         if(isset($_POST['login']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel'])) {
             if(Auth::editUser(Auth::getUser()->id, $_POST['login'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['tel'],Auth::isAdmin())) {
+                Auth::setFlash("Profil correctement édité", "positive");
                 Redirect::url('ArticlesController@nouveautes');
+                exit();
             }else{
                 Auth::setFlash("Une erreur est survenue, veuillez réessayer ultérieurement", "error");
             }
