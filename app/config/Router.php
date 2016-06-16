@@ -37,23 +37,31 @@ class Router {
 
             SimpleRouter::group(['prefix' => 'admin', 'middleware' => 'app\handlers\AdminHandler'], function() {
                 SimpleRouter::get('/', 'AdminController@index');
-                SimpleRouter::get('/articles', 'AdminController@listArticles');
-                SimpleRouter::get('/users', 'AdminController@listUsers');
 
+                SimpleRouter::get('/articles', 'AdminController@listArticles');
                 SimpleRouter::get('/article/{id}/delete', 'AdminController@deleteArticle');
                 SimpleRouter::get('/article/{id}/edit', 'AdminController@editArticle');
                 SimpleRouter::post('/article/{id}/edit', 'AdminController@editArticle');
+                SimpleRouter::get('/article/new', 'AdminController@addArticle');
+                SimpleRouter::post('/article/new', 'AdminController@addArticle');
                 SimpleRouter::get('/article/removeOutofstock', 'AdminController@removeOutofstock');
 
+                SimpleRouter::get('/users', 'AdminController@listUsers');
                 SimpleRouter::get('/user/{id}/delete', 'AdminController@deleteUser');
                 SimpleRouter::get('/user/{id}/edit', 'AdminController@editUser');
                 SimpleRouter::post('/user/{id}/edit', 'AdminController@editUser');
-
-                SimpleRouter::get('/article/new', 'AdminController@addArticle');
-                SimpleRouter::post('/article/new', 'AdminController@addArticle');
-
                 SimpleRouter::get('/user/new', 'AdminController@addUser');
                 SimpleRouter::post('/user/new', 'AdminController@addUser');
+
+                SimpleRouter::get('/magasins', 'AdminMagasinController@index');
+                SimpleRouter::get('/magasins/new', 'AdminMagasinController@add');
+                SimpleRouter::post('/magasins/new', 'AdminMagasinController@add');
+                SimpleRouter::get('/magasins/{id}/edit', 'AdminMagasinController@edit');
+                SimpleRouter::post('/magasins/{id}/edit', 'AdminMagasinController@edit');
+                SimpleRouter::get('/magasins/{id}/delete', 'AdminMagasinController@delete');
+
+                SimpleRouter::post('/magasins/{id}/{articleid}', 'AdminMagasinController@addItem');
+                SimpleRouter::delete('/magasins/{id}/{articleid}', 'AdminMagasinController@delItem');
             });
         });
 

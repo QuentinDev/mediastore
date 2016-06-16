@@ -25,4 +25,8 @@ class User extends Eloquent {
 
 	public $timestamps = false;
 
+	public function commandes()
+	{
+		return $this->hasMany('app\models\commande');
+	}
 }

@@ -19,8 +19,7 @@ class ArticleHelper
 		$article->type_id = $typeId;
 		$article->updated_at = $now;
 
-		$article->save();
-		return true;
+		return $article->save();
 	}
 
 	public static function addArticle($nom, $status, $description, $prix, $editeur, $typeId)
@@ -36,8 +35,7 @@ class ArticleHelper
 		$article->created_at = $now;
 		$article->updated_at = $now;
 
-		$article->save();
-		return $article;
+		return $article->save();
 	}
 
 	public static function removeOutofstock() {

@@ -13,7 +13,7 @@ use Pecee\Http\Request;
 class CommandesController extends BaseController
 {
     public function index() {
-        $commandes = Commande::all();
+        $commandes = Auth::getUser()->commandes;
         echo $this->render('commandes/index.php', compact('commandes'));
     }
 
