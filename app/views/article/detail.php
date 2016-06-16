@@ -8,19 +8,22 @@
                                 <img src="http://lorempicsum.com/futurama/255/200/<?= rand(1, 5) ?>" alt="" />
                         </div>
                         <div class="content">
-                                <a class="header">Libellé</a>
-                                <p><?= $article->nom ?></p>
+                                <a class="header">Article <?= $article->nom ?></a>
                                 <div class="meta">
                                         <span>Description</span>
                                 </div>
                                 <div class="description">
-                                        <p><?= $article->description ?></p>
+                                        <p>Date d'édition: <?= $article->created_at->format('d/m/Y') ?></p>
+                                        <p>Description: <?= $article->description ?></p>
+                                        <p>type: <?= $article->type->name ?></p>
+                                        <p>Prix: <?= $article->prix ?></p>
+
                                 </div>
                                 <div class="extra">
-                                        Type
-                                        <p><?= $article->type->name ?></p>
+                                        Additional Details
+
                                 </div>
-                                <p>Prix <?= $article->prix ?><i class="euro icon"></i></p>
+                                <p>Etat: <?= $article->status ?></p>
                         </div>
                 </div>
         </div>
