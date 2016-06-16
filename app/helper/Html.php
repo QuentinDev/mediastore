@@ -2,6 +2,8 @@
 
 namespace app\helper;
 
+use app\config\Router;
+
 class Html
 {
 	public static function displayError($error, $type="error"){
@@ -11,6 +13,6 @@ class Html
 	}
 
 	public static function getImgForArticle($articleId) {
-		return;
+		return Router::$baseurl . '/assets/uploads/articles/'. $articleId .'.png';
 	}
 }
