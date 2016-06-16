@@ -5,6 +5,7 @@ namespace app\helper;
 use app\models\User;
 use Carbon\Carbon;
 use app\helper\links;
+use app\helper\Html;
 
 
 class Auth
@@ -79,4 +80,18 @@ class Auth
         }
         return new User;
     }
+
+	public static function setFlash($msg, $msgType) {
+		$_SESSION['msg'] = $msg;
+		$_SESSION['msgType'] = $msgType;
+	}
+
+	public static function getFlash() {
+		if(isset($_SESSION['msg']) && isset($_SESSION['msgType'])){
+			$returnMsg = Html::displayError($_SESSION['msg'], $_SESSION['msgType']);
+			unset($_SESSION['msg'], $_SESSION['msgType']);
+			return $returnMsg;
+		}
+		return "";
+	}
 }

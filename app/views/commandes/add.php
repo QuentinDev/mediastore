@@ -1,5 +1,6 @@
 <div class="ui vertical stripe segment">
     <div class="ui three stackable cards container">
+        <?php app\helper\Auth::getFlash() ?>
         <table class="ui selectable single line table">
             <thead>
                 <tr>

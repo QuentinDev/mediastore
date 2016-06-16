@@ -46,7 +46,6 @@
 			</div>
 
 			<?php app\helper\Html::displayError($msg, $msgType) ?>
-			<!-- <button class="ui fluid large teal submit button" type="submit">Envoyer</button> -->
 			<div class="ui buttons">
 			  <a href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button">Retour</a>
 			  <div class="or" data-text="ou"></div>

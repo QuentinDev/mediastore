@@ -19,6 +19,9 @@ class CommandesController extends BaseController
 
     public function add() {
         $cart = new Cart();
+        if(count($cart->getCart()) == 0){
+            Redirect::url('ArticlesController@nouveautes');
+        }
         $user = Auth::getUser();
         $cardType = Card::getTypeCard();
         ksort($cardType);
@@ -26,11 +29,11 @@ class CommandesController extends BaseController
     }
 
     public function saveAdd() {
-        if (!Card::checkCard()) {
+        $cart = new Cart();
+        if (!Card::checkCard() && count($cart->getCart()) === 0) {
             Redirect::prev();
         }
 
-        $cart = new Cart();
         $commande = new Commande();
         $commande->user_id = Auth::getUser()->id;
         $commande->status = 'en préparation';
@@ -58,7 +61,7 @@ class CommandesController extends BaseController
         $cart->clearCart();
 
         @mail($user->email, 'Validation de la commande.', "Vous allez recevoir votre colis le {$commande->delivery_time}. Cordialement, l'équipe MédiaStore");
-
+        Auth::setFlash("Votre commande a été validée", "positive");
         Redirect::url('CommandesController@index');
     }
 }

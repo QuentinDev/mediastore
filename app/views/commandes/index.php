@@ -1,5 +1,6 @@
 <div class="ui vertical stripe segment">
     <div class="ui three stackable cards container">
+        <?= app\helper\Auth::getFlash(); ?>
         <?php if (count($commandes) == 0) : ?>
             <h3>Pas de commandes</h3>
         <?php else: ?>
