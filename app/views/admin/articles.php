@@ -3,6 +3,7 @@
 	<div class="ui three stackable cards container">
 		<a href="<?= \app\helper\Link::url('AdminController@addArticle')?>" style="float:right" class="positive ui button floated right">Ajouter</a>
 		<a href="<?= \app\helper\Link::url('AdminController@removeOutofstock')?>" style="float:right" class="negative ui button floated right">Supprimer les articles hors stock</a>
+		<?php app\helper\Auth::getFlash() ?>
 		<table class="ui selectable inverted table">
 			<thead>
 				<tr>
