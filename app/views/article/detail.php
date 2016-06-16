@@ -41,7 +41,7 @@
                         </tbody>
                         <tfoot>
                         <tr><th colspan="3">
-                                    <img class="detail_img" src="http://lorempicsum.com/futurama/255/200/<?= rand(1, 5) ?>" alt="" />
+                                    <img class="detail_img" src="<?= \app\Helper\Html::getImgForArticle($article->id) ?>" alt="" />
                             </th>
                         </tr></tfoot>
                 </table>
