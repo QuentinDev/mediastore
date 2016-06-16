@@ -4,9 +4,6 @@ namespace app\models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Article extends Eloquent {
-
-	public $timestamps = false;
-
 	public function type()
     {
         return $this->belongsTo('app\models\type');
@@ -15,7 +12,7 @@ class Article extends Eloquent {
     public function magasins()
     {
         return $this->belongsToMany('app\models\magasin')
-            ->withPivot('quantity');
+            ->withPivot(['quantity', 'seuil']);
     }
 
     public function commandes()

@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use app\helper\Auth;
 use app\helper\Redirect;
+use app\models\Article;
 use app\models\Magasin;
 use Pecee\Http\Request;
 
@@ -27,6 +28,7 @@ class AdminMagasinController extends BaseController
         if($nom && $adresse) {
             $magasin->nom = $nom;
             $magasin->adresse = $adresse;
+ 
             if ($magasin->save()) {
                 Auth::setFlash("Magasin correctement ajouté", "positive");
             }else{
@@ -39,6 +41,9 @@ class AdminMagasinController extends BaseController
     public function edit($id) {
         $nom = Request::getInstance()->getInput()->get('nom');
         $adresse = Request::getInstance()->getInput()->get('adresse');
+        $article_id = Request::getInstance()->getInput()->get('article_id');
+        $number = Request::getInstance()->getInput()->get('number');
+        $seuil = Request::getInstance()->getInput()->get('seuil');
 
         $magasin = Magasin::findOrFail($id);
         if($nom && $adresse) {
@@ -51,15 +56,44 @@ class AdminMagasinController extends BaseController
             }
         }
 
-        echo $this->render('admin/magasin/edit.php', compact('magasin'));
+        if ($article_id && $number && $seuil) {
+            $article = Article::findOrFail($article_id);
+            $article->magasins()->sync([$magasin->id => ['quantity' => $number, 'seuil' => $seuil]]);
+            Auth::setFlash("Article correctement ajouté", "positive");
+        }
+
+        $articles = Article::all();
+        echo $this->render('admin/magasin/edit.php', compact('magasin', 'articles'));
     }
     
-    public function addItem($id, $articleid) {
-        
+    public function addQuantity($id, $articleid) {
+        $number = Request::getInstance()->getInput()->get('number');
+        $seuil = Request::getInstance()->getInput()->get('seuil');
+
+        $article = Article::findOrFail($articleid);
+
+        $sync = [];
+        if ($number > 00) {
+            $sync['quantity'] = $number;
+            Auth::setFlash("Quantité correctement modifié", "positive");
+        }
+        if ($seuil > 00) {
+            $sync['seuil'] = $seuil;
+            Auth::setFlash("Sueil correctement modifié", "positive");
+        }
+
+        if (!empty($sync))
+            $article->magasins()->sync([$id => $sync]);
+
+        Redirect::prev();
     }
 
     public function delItem($id, $articleid) {
+        $article = Article::findOrFail($articleid);
+        $article->magasins()->detach($id);
+        Auth::setFlash("Quantité correctement modifié", "positive");
 
+        Redirect::prev();
     }
 
     public function delete($id) {

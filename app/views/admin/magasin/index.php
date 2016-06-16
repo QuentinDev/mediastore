@@ -18,7 +18,7 @@
                 <tr>
                     <td><?= $magasin->nom ?></td>
                     <td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;"><?= $magasin->adresse ?></td>
-                    <td><?= $magasin->created_at->diffForHumans() ?></td>
+                    <td><?= $magasin->created_at ?></td>
                     <td>
                         <div class="ui icon top left pointing dropdown button">
                             <i class="wrench icon"></i>

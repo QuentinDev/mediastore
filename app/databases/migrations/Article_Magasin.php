@@ -20,6 +20,7 @@ class Article_Magasin
             $table->integer('article_id')->unsigned();
             $table->integer('magasin_id')->unsigned();
             $table->integer('quantity')->unsigned();
+            $table->integer('seuil')->unsigned();
         });
 
         Capsule::schema()->table('article_magasin', function($table) {

@@ -15,7 +15,7 @@ class Article_Magasin
     {
         foreach (\app\models\Article::all() as $key => $article) {
             $magasin_id = ($key % 2 == 0) ? 1 : 2;
-            $article->magasins()->attach($magasin_id, ['quantity' => rand(0, 100)]);
+            $article->magasins()->attach($magasin_id, ['quantity' => rand(0, 100), 'seuil' => rand(0, 100)]);
         }
     }
 }
