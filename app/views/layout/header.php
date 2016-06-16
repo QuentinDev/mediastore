@@ -26,7 +26,7 @@
             <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item" title="Panier"><i class="in cart icon"></i> (<?= $panier->cartCount() ?>)</a>
 
             <div class="ui dropdown item">
-                <div class="text">Trier par</div>
+                <div class="text"><i class="icon tag"></i></div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
                     <?php foreach ($type_menu as $type): ?>
@@ -50,7 +50,7 @@
                                     <div class="header">Intranet</div>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button"><i class="icon book"></i> Articles</a>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminMagasinController@index')?>" class="ui button"><i class="icon shop"></i> Magasins</a>
-                                    <a class="item" href="<?= \app\helper\Link::url('AdminTypesController@index')?>" class="ui button"><i class="icon shop"></i> Types</a>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminTypesController@index')?>" class="ui button"><i class="icon tags"></i> Types</a>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon users"></i> Users</a>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminCommandesController@index')?>" class="ui button"><i class="icon archive"></i> Commandes</a>
                                     <div class="divider"></div>
