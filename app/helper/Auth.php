@@ -39,7 +39,7 @@ class Auth
 		return true;
 	}
 
-	public static function editUser($id, $login, $nom, $prenom, $email, $adresse, $cp, $tel, $grade) {
+	public static function editUser($id, $login, $nom, $prenom, $email, $adresse, $cp, $tel, $grade = 0 ) {
 		$user = User::where('id', '=', $id)->first();
 		$now = Carbon::now();
 		$user->login = $login;

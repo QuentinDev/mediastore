@@ -31,7 +31,7 @@
                             <?= $_SESSION['user']->prenom; ?>
                             <i class="dropdown icon"></i>
                             <div class="menu">
-                                <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon user"></i> Mon profil</a>
+                                <a class="item" href="<?= \app\helper\Link::url('UserController@profile')?>" class="ui button"><i class="icon user"></i> Mon profil</a>
                                 <a class="item" href="<?= \app\helper\Link::url('CommandesController@index')?>" class="ui button"><i class="icon print"></i> Mes commandes</a>
                                 <div class="divider"></div>
                                 <?php if(app\helper\auth::isAdmin()): ?>

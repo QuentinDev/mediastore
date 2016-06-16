@@ -29,6 +29,9 @@ class Router {
                 SimpleRouter::get('/user/{id}/edit', 'AdminController@editUser');
                 SimpleRouter::post('/user/{id}/edit', 'AdminController@editUser');
 
+                SimpleRouter::get('/user/profile', 'UserController@profile');
+                SimpleRouter::post('/user/profile', 'UserController@profile');
+
                 SimpleRouter::get('/commandes', 'CommandesController@index');
                 SimpleRouter::get('/commandes/add', 'CommandesController@add');
                 SimpleRouter::post('/commandes/add', 'CommandesController@saveAdd');
