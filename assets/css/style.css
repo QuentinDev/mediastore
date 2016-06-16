@@ -9,3 +9,7 @@
 .show-modal {
     cursor: pointer;
 }
+
+#menu-panel .menu .item {
+    min-width: 150px;
+}
