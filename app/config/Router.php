@@ -18,7 +18,7 @@ class Router {
 
 
             SimpleRouter::get('/articles', 'ArticlesController@index');
-            SimpleRouter::get('/articles/{nom}', 'ArticlesController@recherches');
+            SimpleRouter::get('/articles/{nom}', 'ArticlesController@recherches')->where(['nom' => '.*']);
             SimpleRouter::get('/article/{id}', 'ArticlesController@detail');
 
             SimpleRouter::group(['middleware' => 'app\handlers\AuthHandler'], function() {

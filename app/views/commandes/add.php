@@ -78,6 +78,11 @@
                 <div class="column" id="cardCheck">
                     <div class="ui message">
                         <div class="header">
+                            <i class="info circle icon"></i>
+                            Frais de port offerts
+                        </div>
+                        <hr>
+                        <div class="header">
                             Date de livraison estimée :
                         </div>
                         <p><?= $cart->getDateLivraison(); ?></p>
@@ -91,7 +96,11 @@
                         <div class="two fields">
                             <div class="field">
                                 <label>Type</label>
-                                <input placeholder="Visa" type="text"  name="type" id="type" required>
+                                <select class="ui fluid dropdown" name="type" required>
+                                    <?php foreach ($cardType as $key => $value): ?>
+                                        <option value="<?= $key ?>"><?= ucfirst($key) ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="field">
                                 <label>Année</label>

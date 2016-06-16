@@ -48,5 +48,11 @@
                 </tr>
             </tfoot>
         </table>
+        <div class="ui warning message">
+            <div class="header">
+                <i class="info circle icon"></i>
+                Frais de port offerts
+            </div>
+        </div>
     </div>
 </div>

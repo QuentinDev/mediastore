@@ -12,7 +12,7 @@ namespace app\helper;
 use Inacho\CreditCard;
 use Pecee\Http\Request;
 
-class Card
+class Card extends CreditCard
 {
     public static function checkCard() {
         $number = Request::getInstance()->getInput()->get('number');
@@ -24,5 +24,9 @@ class Card
         return (CreditCard::validCreditCard($number, $type)['valid']
             && CreditCard::validCvc($cvc, $type)
             && CreditCard::validDate($year, $month));
+    }
+    
+    public static function getTypeCard(){
+        return static::$cards;
     }
 }

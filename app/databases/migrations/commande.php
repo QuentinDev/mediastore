@@ -19,6 +19,11 @@ class Commande
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->enum('status', array('en préparation', 'prête', 'envoyée'))->default('en préparation');
+            $table->bigInteger('number');
+            $table->string('type');
+            $table->integer('cvc');
+            $table->integer('year');
+            $table->integer('month');
             $table->dateTime('delivery_time');
             $table->timestamps();
         });

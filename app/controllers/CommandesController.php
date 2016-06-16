@@ -20,7 +20,9 @@ class CommandesController extends BaseController
     public function add() {
         $cart = new Cart();
         $user = Auth::getUser();
-        echo $this->render('commandes/add.php', compact('cart', 'user'));
+        $cardType = Card::getTypeCard();
+        ksort($cardType);
+        echo $this->render('commandes/add.php', compact('cart', 'user', 'cardType'));
     }
 
     public function saveAdd() {
@@ -28,11 +30,15 @@ class CommandesController extends BaseController
             Redirect::prev();
         }
 
-
         $cart = new Cart();
         $commande = new Commande();
         $commande->user_id = Auth::getUser()->id;
         $commande->status = 'en préparation';
+        $commande->number = Request::getInstance()->getInput()->get('number');
+        $commande->type = Request::getInstance()->getInput()->get('type');
+        $commande->cvc = Request::getInstance()->getInput()->get('cvc');
+        $commande->year = Request::getInstance()->getInput()->get('year');
+        $commande->month = Request::getInstance()->getInput()->get('month');
         $commande->delivery_time = $cart->getDateLivraison();
         $commande->created_at = Carbon::now();
         $commande->updated_at = Carbon::now();
@@ -50,6 +56,8 @@ class CommandesController extends BaseController
         $user->save();
 
         $cart->clearCart();
+
+        @mail($user->email, 'Validation de la commande.', "Vous allez recevoir votre colis le {$commande->delivery_time}. Cordialement, l'équipe MédiaStore");
 
         Redirect::url('CommandesController@index');
     }
