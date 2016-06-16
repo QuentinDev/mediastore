@@ -12,7 +12,7 @@ class Article extends Eloquent {
     public function magasins()
     {
         return $this->belongsToMany('app\models\magasin')
-            ->withPivot('quantity');
+            ->withPivot(['quantity', 'seuil']);
     }
 
     public function commandes()
