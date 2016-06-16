@@ -1,0 +1,19 @@
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.show-modal {
+    cursor: pointer;
+}
+
+#menu-panel .menu .item {
+    min-width: 150px;
+}
+img.detail_img {
+    height: 150px;
+    width: 150px;
+}

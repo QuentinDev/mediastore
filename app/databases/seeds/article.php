@@ -15,44 +15,53 @@ class Article
 {
     public function run()
     {
+        $now = Carbon::now();
         Capsule::table('articles')->insert([
+            'id' => 1,
             'nom' => 'Star Wars 7',
             'description' => 'Dernier né des films Lucas',
-            'type' => 'DVD',
+            'type_id' => 1,
             'prix' => '25',
             'editeur' => 'Lucas arts',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'status' => 'nouveauté',
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
 
         Capsule::table('articles')->insert([
+            'id' => 2,
             'nom' => 'Gods of Egypt',
             'description' => 'Fantasy',
-            'type' => 'DVD',
+            'type_id' => 1,
             'prix' => '25',
             'editeur' => 'JB films',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'status' => 'disponible',
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
 
         Capsule::table('articles')->insert([
+            'id' => 3,
             'nom' => 'Star Wars 1',
             'description' => 'Le premier né des films Lucas',
-            'type' => 'DVD',
-            'prix' => '25',
+            'type_id' => 2,
+            'prix' => '20',
             'editeur' => 'Lucas arts',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'status' => 'hors stock',
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
 
         Capsule::table('articles')->insert([
+            'id' => 4,
             'nom' => 'Civil War',
             'description' => 'SF',
-            'type' => 'DVD',
-            'prix' => '25',
+            'type_id' => 2,
+            'prix' => '30',
             'editeur' => 'Marvel',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'status' => 'nouveauté',
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
     }
 }

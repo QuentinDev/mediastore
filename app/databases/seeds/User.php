@@ -15,6 +15,7 @@ class User
 {
     public function run()
     {
+        $now = Carbon::now();
 
         Capsule::table('users')->insert([
             'nom' => 'admin',
@@ -26,8 +27,8 @@ class User
             'login' => 'admin',
             'pwd' => hash('sha256', 'admin'),
             'grade' => '1',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
 
         Capsule::table('users')->insert([
@@ -40,8 +41,8 @@ class User
             'login' => 'user',
             'pwd' => hash('sha256', 'user'),
             'grade' => '0',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
     }
 }

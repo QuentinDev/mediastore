@@ -1,11 +1,17 @@
 {
     "require": {
         "illuminate/database": "4.1.*",
-        "pecee/simple-router": "1.7.4.2"
+        "pecee/simple-router": "1.7.4.2",
+        "inacho/php-credit-card-validator": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "app\\": "app"
         }
+    },
+    "scripts": {
+        "migrate_up": "php app/databases/migrate_up.php",
+        "migrate_down": "php app/databases/migrate_down.php",
+        "seed": "php app/databases/seed.php"
     }
 }

@@ -17,12 +17,17 @@ class Article
         Capsule::schema()->create('articles', function($table)
         {
             $table->increments('id');
+            $table->integer('type_id')->unsigned();
             $table->string('nom');
             $table->text('description');
-            $table->integer('type');
             $table->integer('prix');
             $table->string('editeur');
+            $table->enum('status', array('disponible', 'nouveauté', 'hors stock'))->default('nouveauté');
             $table->timestamps();
+        });
+
+        Capsule::schema()->table('articles', function($table) {
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 

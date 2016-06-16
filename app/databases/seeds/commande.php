@@ -9,7 +9,7 @@
 namespace app\seeds;
 
 
-class seedUser
+class Commande
 {
 
 }

@@ -1,5 +1,5 @@
 composer.phar
 /vendor/
 .idea
-app/config/Database.php
+app/config/Config.php
 /Livrables/~*

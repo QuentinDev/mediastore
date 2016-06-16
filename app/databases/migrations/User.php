@@ -26,7 +26,7 @@ class User
             $table->string('adresse');
             $table->integer('cp');
             $table->string('tel');
-            $table->integer('grade');
+            $table->integer('grade')->default(0);
             $table->timestamps();
         });
     }
