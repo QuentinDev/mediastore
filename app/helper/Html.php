@@ -9,4 +9,8 @@ class Html
 			echo '<div class="ui '.$type.' message" style="display:block"><p>'.$error.'</p></div>';
 
 	}
+
+	public static function getImgForArticle($articleId) {
+		return;
+	}
 }

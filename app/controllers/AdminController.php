@@ -97,7 +97,7 @@ class AdminController extends BaseController
         if(isset($_POST['login']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel']) && isset($_POST['grade'])) {
             if(Auth::loginExists($_POST['login'])){
                 $msg = "Ce login existe déjà";
-                $msgType = "positive";
+                $msgType = "error";
             }elseif(Auth::register($_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['email'], $_POST['adresse'], $_POST['cp'], $_POST['tel'], $_POST['grade'])) {
                 $msg = "Utilisateur correctement ajouté";
                 $msgType = "positive";
