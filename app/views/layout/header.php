@@ -37,6 +37,7 @@
                                 <?php if(app\helper\auth::isAdmin()): ?>
                                     <div class="header">Intranet</div>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button"><i class="icon book"></i> Articles</a>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminMagasinController@index')?>" class="ui button"><i class="icon shop"></i> Magasins</a>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon users"></i> Users</a>
                                     <div class="divider"></div>
                                 <?php endif; ?>
