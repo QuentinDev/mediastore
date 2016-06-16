@@ -28,6 +28,7 @@ class AdminMagasinController extends BaseController
         if($nom && $adresse) {
             $magasin->nom = $nom;
             $magasin->adresse = $adresse;
+ 
             if ($magasin->save()) {
                 Auth::setFlash("Magasin correctement ajouté", "positive");
             }else{
