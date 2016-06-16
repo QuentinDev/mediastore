@@ -2,36 +2,36 @@
 	<form method="post" action="" class="ui large form">
 		<div class="ui stacked segment">
 		<div class="field">
-			<label>Login</label>
-			<input name="login" placeholder="login" type="text" required>
+			<label for="login">Login</label>
+			<input id="login" name="login" placeholder="login" type="text" required>
 		</div>
 		<div class="field">
-			<label>E-mail</label>
-			<input name="email" placeholder="E-mail" type="email" required>
+			<label for="email">E-mail</label>
+			<input id="email" name="email" placeholder="E-mail" type="email" required>
 		</div>
 		<div class="field">
-			<label>Mot de passe</label>
-			<input name="password" placeholder="Mot de passe" type="password" required>
+			<label for="password">Mot de passe</label>
+			<input id="password" name="password" placeholder="Mot de passe" type="password" required>
 		</div>
 		<div class="field">
-			<label>Nom</label>
-			<input name="nom" placeholder="Nom" type="text" required>
+			<label for="nom">Nom</label>
+			<input id="nom" name="nom" placeholder="Nom" type="text" required>
 		</div>
 		<div class="field">
-			<label>Prénom</label>
-			<input name="prenom" placeholder="Prénom" type="text" required>
+			<label for="prenom">Prénom</label>
+			<input id="prenom" name="prenom" placeholder="Prénom" type="text" required>
 		</div>
 		<div class="field">
-			<label>Adresse</label>
-			<input name="adresse" placeholder="adresse" type="text" required>
+			<label for="adresse">Adresse</label>
+			<input id="adresse" name="adresse" placeholder="adresse" type="text" required>
 		</div>
 		<div class="field">
-			<label>Code postal</label>
-			<input name="cp" placeholder="Code postal" type="number" min="0" max="99999" required>
+			<label for="cp">Code postal</label>
+			<input id="cp" name="cp" placeholder="Code postal" type="number" min="0" max="99999" required>
 		</div>
 		<div class="field">
-			<label>Téléphone</label>
-			<input name="tel" placeholder="Téléphone" type="tel" required>
+			<label for="tel">Téléphone</label>
+			<input id="tel" name="tel" placeholder="Téléphone" type="tel" required>
 		</div>
 		<?php app\helper\Html::displayError($error) ?>
 		<button class="ui fluid large teal submit button" type="submit">Submit</button>

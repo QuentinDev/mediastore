@@ -27,12 +27,19 @@
                     <div class="item">
                         <p>Bonjour <?= $_SESSION['user']->prenom; ?></p>
                     </div>
-                    <div class="item">
-                        <a href="<?= \app\helper\Link::url('UserController@logout')?>" class="ui button">Déconnexion</a>
+                    <div class="item" title="Se déconnecter">
+                        <a href="<?= \app\helper\Link::url('UserController@logout')?>" ><i class="icon sign out"></i></a>
                     </div>
                     <?php if(app\helper\auth::isAdmin()): ?>
-                        <div class="item">
-                            <a href="<?= \app\helper\Link::url('UserController@login')?>" class="ui button">Backoffice</a>
+                        <div class="ui compact menu" style="margin: 10px;">
+                            <div class="ui simple dropdown item">
+                                Admin
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button">Articles</a>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button">Users</a>
+                                </div>
+                            </div>
                         </div>
                     <?php endif; ?>
                 <?php else: ?>
@@ -49,17 +56,17 @@
                         <button id="sendsearch"><i class="inverted circular search link icon"></i></button>
                     </div>
                 </div>
-                </div>
             </div>
         </div>
+    </div>
 
     <!-- Sidebar Menu -->
     <div class="ui vertical inverted sidebar menu">
-      <a class="active item">Accueil</a>
-      <a class="item">Panier</a>
-      <a class="item">Se connecter</a>
-      <a class="item">S'inscrire</a>
-      <a class="item">Recherche</a>
+        <a class="active item">Accueil</a>
+        <a class="item">Panier</a>
+        <a class="item">Se connecter</a>
+        <a class="item">S'inscrire</a>
+        <a class="item">Recherche</a>
     </div>
 
     <div class="ui center aligned container">

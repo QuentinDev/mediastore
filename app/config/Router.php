@@ -30,14 +30,23 @@ class Router {
             });
 
             SimpleRouter::group(['prefix' => 'admin', 'middleware' => 'app\handlers\AdminHandler'], function() {
-                SimpleRouter::get('/', 'AdminController@listArticles', ['as' => 'get_articles_admin']);
-                SimpleRouter::get('/admin', 'AdminController@listArticles');
-                SimpleRouter::get('/admin/article/{id}/delete', 'AdminController@deleteArticle');
-                SimpleRouter::get('/admin/article/{id}/edit', 'AdminController@editArticle');
-                SimpleRouter::get('/admin/user/{id}/delete', 'AdminController@deleteUser');
-                SimpleRouter::get('/admin/user/{id}/edit', 'AdminController@editUser');
-                SimpleRouter::get('/admin/users', 'AdminController@listUsers');
-                SimpleRouter::get('/admin/users', 'AdminController@listUsers');
+                SimpleRouter::get('/', 'AdminController@index');
+                SimpleRouter::get('/articles', 'AdminController@listArticles');
+                SimpleRouter::get('/users', 'AdminController@listUsers');
+
+                SimpleRouter::get('/article/{id}/delete', 'AdminController@deleteArticle');
+                SimpleRouter::get('/article/{id}/edit', 'AdminController@editArticle');
+                SimpleRouter::post('/article/{id}/edit', 'AdminController@editArticle');
+
+                SimpleRouter::get('/user/{id}/delete', 'AdminController@deleteUser');
+                SimpleRouter::get('/user/{id}/edit', 'AdminController@editUser');
+                SimpleRouter::post('/user/{id}/edit', 'AdminController@editUser');
+
+                SimpleRouter::get('/article/new', 'AdminController@addArticle');
+                SimpleRouter::post('/article/new', 'AdminController@addArticle');
+
+                SimpleRouter::get('/user/new', 'AdminController@addUser');
+                SimpleRouter::post('/user/new', 'AdminController@addUser');
             });
         });
 

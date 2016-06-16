@@ -4,9 +4,9 @@ namespace app\helper;
 
 class Html
 {
-	public static function displayError($error){
+	public static function displayError($error, $type="error"){
 		if (!is_null($error))
-			echo '<div class="ui error message" style="display:block"><p>'.$error.'</p></div>';
+			echo '<div class="ui '.$type.' message" style="display:block"><p>'.$error.'</p></div>';
 
 	}
 }

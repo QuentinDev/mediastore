@@ -35,6 +35,24 @@ class Auth
 		$user->updated_at = $now;
 
 		$user->save();
+		return true;
+	}
+
+	public static function editUser($id, $login, $nom, $prenom, $email, $adresse, $cp, $tel, $grade) {
+		$user = User::where('id', '=', $id)->first();
+		$now = Carbon::now();
+		$user->login = $login;
+		$user->nom = $nom;
+		$user->prenom = $prenom;
+		$user->email = $email;
+		$user->adresse = $adresse;
+		$user->cp = $cp;
+		$user->tel = $tel;
+		$user->grade = $grade;
+		$user->updated_at = $now;
+
+		$user->save();
+		return true;
 	}
 
 	public static function isAuth()
@@ -48,5 +66,10 @@ class Auth
 			return $_SESSION['user']->grade;
 		}
 		return false;
+	}
+
+	public static function loginExists($login)
+	{
+		return $user = User::where('login', '=', $login)->first();
 	}
 }

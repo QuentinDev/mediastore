@@ -1,5 +1,7 @@
 <div class="ui vertical stripe segment">
+	<h1>Liste des articles</h1>
 	<div class="ui three stackable cards container">
+		<a href="<?= \app\helper\Link::url('AdminController@addArticle')?>" style="float:right" class="positive ui button floated right">Ajouter</a>
 		<table class="ui selectable inverted table">
 			<thead>
 				<tr>
@@ -23,9 +25,12 @@
 						<td><?= $article->editeur ?></td>
 						<td><?= $article->created_at->diffForHumans() ?></td>
 						<td>
-							<div class="ui buttons">
-							  <a href="<?= \app\helper\Link::url('AdminController@editArticle', ['id' => $article->id])?>" class="ui blue button"><i class="edit icon"></i> Éditer</a>
-							  <a href="<?= \app\helper\Link::url('AdminController@deleteArticle', ['id' => $article->id])?>" class="ui red button"><i class="trash icon"></i> Supprimer</a>
+							<div class="ui icon top left pointing dropdown button">
+								<i class="wrench icon"></i>
+								<div class="menu">
+									<div class="item"><a href="<?= \app\helper\Link::url('AdminController@editArticle', ['id' => $article->id])?>" class="ui blue button"><i class="edit icon"></i> Éditer</a></div>
+									<div class="item"><a href="<?= \app\helper\Link::url('AdminController@deleteArticle', ['id' => $article->id])?>" class="ui red button"><i class="trash icon"></i> Supprimer</a></div>
+								</div>
 							</div>
 						</td>
 					</tr>
@@ -35,3 +40,5 @@
 		</table>
 	</div>
 </div>
+
+<script>$('.dropdown').dropdown();</script>

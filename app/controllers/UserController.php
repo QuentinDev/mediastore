@@ -31,7 +31,9 @@ class UserController extends BaseController
 		{
             if(Auth::register($_POST['login'],$_POST['nom'],$_POST['prenom'],$_POST['password'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['tel']))
             {
-
+                if(Auth::auth($_POST['login'], $_POST['password'])) {
+                    Redirect::url('HomeController@index');
+                }
             }else{
                  $error = "Une erreur est survenue, veuillez ressayer ultérieurement.";
             }
