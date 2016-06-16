@@ -11,6 +11,7 @@
 					<th>Description</th>
 					<th>Type</th>
 					<th>Prix</th>
+					<th>Seuil</th>
 					<th>Statut</th>
 					<th>Éditeur</th>
 					<th>Date d'ajout</th>
@@ -25,6 +26,7 @@
 						<td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;"><?= $article->description ?></td>
 						<td><?= $article->type->name ?></td>
 						<td><?= $article->prix ?></td>
+						<td><?= $article->seuil ?></td>
 						<td><?= $article->status ?></td>
 						<td><?= $article->editeur ?></td>
 						<td><?= $article->created_at->diffForHumans() ?></td>

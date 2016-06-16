@@ -21,6 +21,7 @@ class Article
             $table->string('nom');
             $table->text('description');
             $table->integer('prix');
+            $table->integer('seuil');
             $table->string('editeur');
             $table->enum('status', array('disponible', 'nouveauté', 'hors stock'))->default('nouveauté');
             $table->timestamps();
