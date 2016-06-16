@@ -25,7 +25,7 @@ class Router {
                 SimpleRouter::get('/panier/add/{id}', 'PanierController@add');
                 SimpleRouter::get('/panier/remove/{id}', 'PanierController@remove');
                 SimpleRouter::post('/panier/update/{id}', 'PanierController@update');
-                
+
                 SimpleRouter::get('/user/{id}/edit', 'AdminController@editUser');
                 SimpleRouter::post('/user/{id}/edit', 'AdminController@editUser');
 
@@ -43,6 +43,7 @@ class Router {
                 SimpleRouter::get('/article/{id}/delete', 'AdminController@deleteArticle');
                 SimpleRouter::get('/article/{id}/edit', 'AdminController@editArticle');
                 SimpleRouter::post('/article/{id}/edit', 'AdminController@editArticle');
+                SimpleRouter::get('/article/removeOutofstock', 'AdminController@removeOutofstock');
 
                 SimpleRouter::get('/user/{id}/delete', 'AdminController@deleteUser');
                 SimpleRouter::get('/user/{id}/edit', 'AdminController@editUser');

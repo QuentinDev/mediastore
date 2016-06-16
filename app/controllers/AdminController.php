@@ -45,8 +45,8 @@ class AdminController extends BaseController
         }
 
         /* Proceed Article Form */
-        if(isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
-            if(ArticleHelper::editArticle($_POST['id'], $_POST['nom'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'])) {
+        if(isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
+            if(ArticleHelper::editArticle($_POST['id'], $_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'])) {
                 $msg = "Article correctement édité";
                 $msgType = "positive";
             }else{
@@ -115,8 +115,8 @@ class AdminController extends BaseController
         $types = Type::all();
 
         /* Proceed Article Form */
-        if(isset($_POST['nom']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
-            $article = ArticleHelper::addArticle($_POST['nom'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId']);
+        if(isset($_POST['nom']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
+            $article = ArticleHelper::addArticle($_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId']);
             if($article) {
                 $msg = "Article correctement ajouté";
                 $msgType = "positive";
@@ -145,6 +145,11 @@ class AdminController extends BaseController
 
     public function index() {
         Redirect::url('AdminController@listArticles');
+    }
+
+    public function removeOutofstock() {
+        ArticleHelper::removeOutofstock();
+        $this->index();
     }
 
 }

@@ -1,6 +1,6 @@
 	</div>
 	<script>
-    $('#dropdown').dropdown();
+    $('.dropdown').dropdown();
     </script>
 </body>
 </html>

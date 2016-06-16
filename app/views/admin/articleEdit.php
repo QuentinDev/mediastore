@@ -17,8 +17,16 @@
 				<input id="editeur" value="<?= isset($article->editeur) ? $article->editeur : '' ?>" name="editeur" placeholder="George Lucas" type="text" maxlength="255" required>
 			</div>
 			<div class="field">
+				<label>Statut</label>
+				<select class="ui search dropdown" name="status">
+					<option value="disponible" <?= (isset($article) && $article->status === "disponible") ? "selected" : " "?>>Disponible</option>
+					<option value="nouveauté" <?= (isset($article) && $article->status === "nouveauté") ? "selected" : " "?>>Nouveauté</option>
+					<option value="hors stock" <?= (isset($article) && $article->status === "hors stock") ? "selected" : " "?>>Hors stock</option>
+				</select>
+			</div>
+			<div class="field">
 				<label>Type</label>
-				<select id="dropdown" class="ui search dropdown" name="typeId">
+				<select class="ui search dropdown" name="typeId">
 					<?php foreach($types as $type): ?>
 						<option value="<?= $type->id ?>" <?= (isset($article) && $type->id === $article->type_id) ? "selected" : " "?> > <?= $type->name ?></option>
 					<?php endforeach; ?>
