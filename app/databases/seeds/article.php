@@ -67,5 +67,31 @@ class Article
             'created_at' => $now,
             'updated_at' => $now,
         ]);
+
+        Capsule::table('articles')->insert([
+            'id' => 5,
+            'nom' => 'Batman Vs Superman',
+            'description' => 'SF',
+            'type_id' => 1,
+            'prix' => '30',
+            'seuil' => '5',
+            'editeur' => 'Zack Snyder',
+            'status' => 'nouveauté',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
+
+        Capsule::table('articles')->insert([
+            'id' => 6,
+            'nom' => 'Batman Vs Superman',
+            'description' => 'SF',
+            'type_id' => 2,
+            'prix' => '30',
+            'seuil' => '5',
+            'editeur' => 'Zack Snyder',
+            'status' => 'nouveauté',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
     }
 }
