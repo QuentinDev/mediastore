@@ -63,8 +63,8 @@ class Router {
                 SimpleRouter::post('/magasins/{id}/edit', 'AdminMagasinController@edit');
                 SimpleRouter::get('/magasins/{id}/delete', 'AdminMagasinController@delete');
 
-                SimpleRouter::post('/magasins/{id}/{articleid}', 'AdminMagasinController@addItem');
-                SimpleRouter::delete('/magasins/{id}/{articleid}', 'AdminMagasinController@delItem');
+                SimpleRouter::post('/magasins/{id}/{articleid}', 'AdminMagasinController@addQuantity');
+                SimpleRouter::get('/magasins/{id}/{articleid}', 'AdminMagasinController@delItem');
             });
         });
 
