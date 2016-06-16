@@ -26,24 +26,24 @@
             <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item">Panier</a>
             <div class="right menu">
                 <?php if(app\helper\auth::isAuth()): ?>
-                    <div class="item">
-                        <p>Bonjour <?= $_SESSION['user']->prenom; ?></p>
-                    </div>
-                    <div class="item" title="Se déconnecter">
-                        <a href="<?= \app\helper\Link::url('UserController@logout')?>" ><i class="icon sign out"></i></a>
-                    </div>
-                    <?php if(app\helper\auth::isAdmin()): ?>
-                        <div class="ui compact menu" style="margin: 10px;">
-                            <div class="ui simple dropdown item">
-                                Admin
-                                <i class="dropdown icon"></i>
-                                <div class="menu">
-                                    <a class="item" href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button">Articles</a>
-                                    <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button">Users</a>
-                                </div>
+                    <div class="ui compact menu" style="margin: 10px;">
+                        <div class="ui simple dropdown item" id="menu-panel">
+                            <?= $_SESSION['user']->prenom; ?>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon user"></i> Mon profil</a>
+                                <a class="item" href="<?= \app\helper\Link::url('CommandesController@index')?>" class="ui button"><i class="icon print"></i> Mes commandes</a>
+                                <div class="divider"></div>
+                                <?php if(app\helper\auth::isAdmin()): ?>
+                                    <div class="header">Intranet</div>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button"><i class="icon book"></i> Articles</a>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon users"></i> Users</a>
+                                    <div class="divider"></div>
+                                <?php endif; ?>
+                                <a class="item" href="<?= \app\helper\Link::url('UserController@logout')?>" class="ui button"><i class="icon sign out"></i> Se déconnecter</a>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 <?php else: ?>
                     <div class="item">
                         <a href="<?= \app\helper\Link::url('UserController@login')?>" class="ui button">Se connecter</a>
