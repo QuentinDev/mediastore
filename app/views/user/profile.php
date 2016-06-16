@@ -8,11 +8,6 @@
 			</div>
 			<?php if(isset($user->id)): ?>
 				<input value="<?= $user->id ?>" name="id" type="hidden">
-			<?php else: ?>
-				<div class="field">
-					<label for="password">Mot de passe</label>
-					<input name="password" type="password">
-				</div>
 			<?php endif; ?>
 			<div class="field">
 				<label for="email">E-mail</label>
@@ -38,16 +33,9 @@
 				<label for="tel">N° de téléphone</label>
 				<input id="tel" value="<?= isset($user->tel) ? $user->tel : '' ?>" name="tel" placeholder="02 62 96 52 90" type="tel" maxlength="255" required>
 			</div>
-			<div class="field">
-				<label>Type</label>
-				<select id="dropdown" class="ui search dropdown" name="grade">
-						<option value="0" <?= (isset($user) && $user->grade === 0) ? "selected" : " "?>>Utilisateur</option>
-						<option value="1" <?= (isset($uset) && $user->grade === 1) ? "selected" : " "?>>Admin</option>
-				</select>
-			</div>
-			
+
 			<div class="ui buttons">
-			  <a href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button">Retour</a>
+			  <a href="<?= \app\helper\Link::url('ArticlesController@nouveautes')?>" class="ui button">Retour</a>
 			  <div class="or" data-text="ou"></div>
 			  <button type="submit" class="ui positive button">Envoyer</button>
 			</div>

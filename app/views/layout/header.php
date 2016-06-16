@@ -21,7 +21,7 @@
 <body>
     <div class="ui large top hidden menu">
         <div class="ui container">
-            <a href="<?= \app\helper\Link::url('ArticlesController@nouveautes')?>" class="item">Accueil</a> <!-- class active -->
+            <a href="<?= \app\helper\Link::url('ArticlesController@nouveautes')?>" class="item">Nouveauté</a> <!-- class active -->
             <a href="<?= \app\helper\Link::url('ArticlesController@index')?>" class="item">Articles</a>
             <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item">Panier</a>
             <div class="right menu">
@@ -31,12 +31,13 @@
                             <?= $_SESSION['user']->prenom; ?>
                             <i class="dropdown icon"></i>
                             <div class="menu">
-                                <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon user"></i> Mon profil</a>
+                                <a class="item" href="<?= \app\helper\Link::url('UserController@profile')?>" class="ui button"><i class="icon user"></i> Mon profil</a>
                                 <a class="item" href="<?= \app\helper\Link::url('CommandesController@index')?>" class="ui button"><i class="icon print"></i> Mes commandes</a>
                                 <div class="divider"></div>
                                 <?php if(app\helper\auth::isAdmin()): ?>
                                     <div class="header">Intranet</div>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button"><i class="icon book"></i> Articles</a>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminMagasinController@index')?>" class="ui button"><i class="icon shop"></i> Magasins</a>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon users"></i> Users</a>
                                     <div class="divider"></div>
                                 <?php endif; ?>

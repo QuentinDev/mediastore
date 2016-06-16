@@ -2,6 +2,7 @@
 	<h1>Liste des utilisateurs</h1>
 	<div class="ui three stackable cards container">
 		<a href="<?= \app\helper\Link::url('AdminController@addUser')?>" style="float:right" class="positive ui button floated right">Ajouter</a>
+		<?php app\helper\Auth::getFlash() ?>
 		<table class="ui selectable inverted table">
 			<thead>
 				<tr>

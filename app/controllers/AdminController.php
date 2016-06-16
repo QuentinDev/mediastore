@@ -4,10 +4,7 @@ namespace app\controllers;
 use app\models\User;
 use app\models\Article;
 use app\models\Type;
-use Carbon\Carbon;
 use app\helper\Auth;
-use app\helper\Link;
-use app\helper\UserHelper;
 use app\helper\ArticleHelper;
 use app\helper\Redirect;
 
@@ -24,39 +21,34 @@ class AdminController extends BaseController
     }
 
     public function editArticle($id) {
-        $msg = null;
-        $msgType = null;
 
         /* IMG Upload */
         if(isset($_FILES['articleImg']) && !empty($_FILES['articleImg']['name'])) {
             $target_dir = "assets/uploads/articles/";
             $_FILES["articleImg"]["name"] = "{$id}.png";
             $target_file = $target_dir . basename($_FILES["articleImg"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
             $check = getimagesize($_FILES["articleImg"]["tmp_name"]);
             if($check !== false) {
                 move_uploaded_file($_FILES['articleImg']['tmp_name'], $target_file);
             }else {
                 unset($_POST); //to stop process at next condition
-                $msg = "Un problème est survenue avec le format de l'image, veuillez ressayer";
-                $msgType = "error";
+                Auth::setFlash( "Un problème est survenue avec le format de l'image, veuillez réessayer", "error");
             }
         }
 
         /* Proceed Article Form */
-        if(isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
-            if(ArticleHelper::editArticle($_POST['id'], $_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'])) {
-                $msg = "Article correctement édité";
-                $msgType = "positive";
+        if(isset($_POST['id']) && isset($_POST['nom']) &&  isset($_POST['seuil']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
+            if(ArticleHelper::editArticle($_POST['id'], $_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'],  $_POST['seuil'])) {
+                Auth::setFlash("Article correctement édité", "positive");
             }else{
-                $msg = "Une erreur est survenue, veuillez ressayer";
-                $msgType = "error";
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
         $article = Article::where('id', '=', $id)->first();
         $types = Type::all();
-        echo $this->render('admin/articleEdit.php', compact('article', 'types', 'msg', 'msgType'));
+
+        echo $this->render('admin/articleEdit.php', compact('article', 'types'));
     }
 
     public function deleteArticle($id) {
@@ -65,24 +57,18 @@ class AdminController extends BaseController
     }
 
     public function editUser($id) {
-        $msg = null;
-        $msgType = null;
-
         if(isset($_POST['id']) && isset($_POST['login']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel']) && isset($_POST['grade'])) {
             if(Auth::loginExists($_POST['login'])){
-                $msg = "Ce login existe déjà";
-                $msgType = "error";
+                Auth::setFlash("Ce login existe déjà", "error");
             }elseif(Auth::editUser($_POST['id'], $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['adresse'], $_POST['cp'], $_POST['tel'], $_POST['grade'])) {
-                $msg = "Utilisateur correctement édité";
-                $msgType = "positive";
+                Auth::setFlash("Utilisateur correctement édité", "positive");
             }else{
-                $msg = "Une erreur est survenue, veuillez ressayer";
-                $msgType = "error";
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
         $user = User::where('id', '=', $id)->first();
 
-        echo $this->render('admin/userEdit.php', compact('user', 'msg', 'msgType'));
+        echo $this->render('admin/userEdit.php', compact('user'));
     }
 
     public function deleteUser($id) {
@@ -91,56 +77,44 @@ class AdminController extends BaseController
     }
 
     public function addUser() {
-        $msg = null;
-        $msgType = null;
-
         if(isset($_POST['login']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel']) && isset($_POST['grade'])) {
             if(Auth::loginExists($_POST['login'])){
-                $msg = "Ce login existe déjà";
-                $msgType = "error";
+                Auth::setFlash("Ce login existe déjà", "error");
             }elseif(Auth::register($_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['email'], $_POST['adresse'], $_POST['cp'], $_POST['tel'], $_POST['grade'])) {
-                $msg = "Utilisateur correctement ajouté";
-                $msgType = "positive";
+                Auth::setFlash("Utilisateur correctement ajouté", "positive");
             }else{
-                $msg = "Une erreur est survenue, veuillez ressayer";
-                $msgType = "error";
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
-        echo $this->render('admin/userEdit.php', compact('msg', 'msgType'));
+        echo $this->render('admin/userEdit.php');
     }
 
     public function addArticle() {
-        $msg = null;
-        $msgType = null;
         $types = Type::all();
 
         /* Proceed Article Form */
-        if(isset($_POST['nom']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
-            $article = ArticleHelper::addArticle($_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId']);
+        if(isset($_POST['nom']) && isset($_POST['seuil']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
+            $article = ArticleHelper::addArticle($_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'], $_POST['seuil']);
             if($article) {
-                $msg = "Article correctement ajouté";
-                $msgType = "positive";
+                Auth::setFlash("Article correctement ajouté", "positive");
                 /* IMG Upload */
                 if(isset($_FILES['articleImg']) && !empty($_FILES['articleImg']['name'])) {
                     $target_dir = "assets/uploads/articles/";
                     $_FILES["articleImg"]["name"] = "{$article->id}.png";
                     $target_file = $target_dir . basename($_FILES["articleImg"]["name"]);
-                    $uploadOk = 1;
-                    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
                     $check = getimagesize($_FILES["articleImg"]["tmp_name"]);
                     if($check !== false) {
                         move_uploaded_file($_FILES['articleImg']['tmp_name'], $target_file);
                     }else {
-                        $msg = "Un problème est survenue avec le format de l'image, veuillez ressayer";
-                        $msgType = "error";
+                        Auth::setFlash("Un problème est survenue avec le format de l'image, veuillez réessayer", "error");
                     }
                 }
             }else{
-                $msg = "Une erreur est survenue, veuillez ressayer";
-                $msgType = "error";
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
-        echo $this->render('admin/articleEdit.php', compact('types', 'msg', 'msgType'));
+        echo $this->render('admin/articleEdit.php', compact('types'));
     }
 
     public function index() {

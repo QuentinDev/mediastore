@@ -1,6 +1,8 @@
 <div class="column" style="max-width: 450px; margin: 0px auto; padding: 20px;">
 	<form method="post" action="" class="ui large form" enctype="multipart/form-data">
 		<div class="ui stacked segment">
+			<?php app\helper\Auth::getFlash() ?>
+
 			<?php if(isset($article->id)): ?>
 				<input value="<?= $article->id ?>" name="id" type="hidden">
 			<?php endif; ?>
@@ -36,13 +38,17 @@
 				<label for="prix">Prix (en €)</label>
 				<input id="prix" value="<?= isset($article->prix) ? $article->prix : '' ?>" name="prix" placeholder="49€" type="number" required>
 			</div>
+
+			<div class="field">
+				<label for="seuil">Seuil</label>
+				<input id="seuil" value="<?= isset($article->seuil) ? $article->seuil : '' ?>" name="seuil" placeholder="15" type="number" required>
+			</div>
+
 			<div class="field">
 				<label for="articleImg">Image</label>
 				<input id="articleImg" type="file" name="articleImg" />
 			</div>
 
-			<?php app\helper\Html::displayError($msg, $msgType) ?>
-			<!-- <button class="ui fluid large teal submit button" type="submit">Submit</button> -->
 			<div class="ui buttons">
 			  <a href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button">Retour</a>
 			  <div class="or" data-text="ou"></div>

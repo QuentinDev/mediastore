@@ -15,6 +15,6 @@ class Redirect
 		if (isset($_SERVER['HTTP_REFERER']))
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		else
-			static::url('HomeController@index');
+			static::url('ArticlesController@nouveautes');
 	}
 }

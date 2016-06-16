@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class ArticleHelper
 {
-	public static function editArticle($id, $nom, $status, $description, $prix, $editeur, $typeId)
+	public static function editArticle($id, $nom, $status, $description, $prix, $editeur, $typeId, $seuil)
 	{
 		$article = Article::where('id', '=', $id)->first();
 		$now = Carbon::now();
@@ -15,15 +15,16 @@ class ArticleHelper
 		$article->status = $status;
 		$article->description = $description;
 		$article->prix = $prix;
+		$article->seuil = $seuil;
 		$article->editeur = $editeur;
 		$article->type_id = $typeId;
 		$article->updated_at = $now;
-
 		$article->save();
-		return true;
+
+		return $article;
 	}
 
-	public static function addArticle($nom, $status, $description, $prix, $editeur, $typeId)
+	public static function addArticle($nom, $status, $description, $prix, $editeur, $typeId, $seuil)
 	{
 		$article = new Article;
 		$now = Carbon::now();
@@ -31,12 +32,13 @@ class ArticleHelper
 		$article->status = $status;
 		$article->description = $description;
 		$article->prix = $prix;
+		$article->seuil = $seuil;
 		$article->editeur = $editeur;
 		$article->type_id = $typeId;
 		$article->created_at = $now;
 		$article->updated_at = $now;
-
 		$article->save();
+
 		return $article;
 	}
 

@@ -20,7 +20,7 @@ class Auth
 		return false;
 	}
 
-	public static function register($login, $nom, $prenom, $password, $email, $adresse, $cp, $tel) {
+	public static function register($login, $nom, $prenom, $password, $email, $adresse, $cp, $tel, $grade = 0) {
 		$now = Carbon::now();
 		$user = new User;
 		$user->login = $login;
@@ -32,14 +32,14 @@ class Auth
 		$user->adresse = $adresse;
 		$user->cp = $cp;
 		$user->tel = $tel;
+		$user->grade = $grade;
 		$user->created_at = $now;
 		$user->updated_at = $now;
 
-		$user->save();
-		return true;
+		return $user->save();
 	}
 
-	public static function editUser($id, $login, $nom, $prenom, $email, $adresse, $cp, $tel, $grade) {
+	public static function editUser($id, $login, $nom, $prenom, $email, $adresse, $cp, $tel, $grade = 0 ) {
 		$user = User::where('id', '=', $id)->first();
 		$now = Carbon::now();
 		$user->login = $login;
@@ -52,8 +52,7 @@ class Auth
 		$user->grade = $grade;
 		$user->updated_at = $now;
 
-		$user->save();
-		return true;
+		return $user->save();
 	}
 
 	public static function isAuth()
@@ -71,7 +70,7 @@ class Auth
 
 	public static function loginExists($login)
 	{
-		return $user = User::where('login', '=', $login)->first();
+		return User::where('login', '=', $login)->first();
 	}
 
     public static function getUser() {
@@ -88,10 +87,8 @@ class Auth
 
 	public static function getFlash() {
 		if(isset($_SESSION['msg']) && isset($_SESSION['msgType'])){
-			$returnMsg = Html::displayError($_SESSION['msg'], $_SESSION['msgType']);
+			Html::displayError($_SESSION['msg'], $_SESSION['msgType']);
 			unset($_SESSION['msg'], $_SESSION['msgType']);
-			return $returnMsg;
 		}
-		return "";
 	}
 }

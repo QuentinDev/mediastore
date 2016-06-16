@@ -3,12 +3,22 @@
 </div>
 <div class="ui bottom attached active tab segment">
         <div class="ui items">
+                <?php if (\app\models\Article::getQuantityForId($article->id) < $article->seuil): ?>
+                <div class="ui warning message">
+                        <div class="header">
+                                Attention! Le seuil minimun pour cette nouveauté est atteint! Veuillez passer commande auprès de notre fournisseur.
+                        </div>
+
+                </div>
+                <?php endif; ?>
                 <table class="ui celled table">
                         <thead>
-                        <tr><th>Article</th>
-                                <th><?= $article->nom ?></th>
-                                <th></th>
-                        </tr></thead>
+                                <tr>
+                                        <th>Article</th>
+                                        <th><?=  $article->nom ?></th>
+                                        <th></th>
+                                </tr>
+                        </thead>
                         <tbody>
                         <tr>
                                 <td>
@@ -38,10 +48,15 @@
                                 <td><?= ucfirst($article->status) ?></td>
                                 <td></td>
                         </tr>
+                        <tr>
+                                <td>Quantité</td>
+                                <td><?= \app\models\Article::getQuantityForId($article->id); ?></td>
+                                <td></td>
+                        </tr>
                         </tbody>
                         <tfoot>
                         <tr><th colspan="3">
-                                    <img class="detail_img" src="http://lorempicsum.com/futurama/255/200/<?= rand(1, 5) ?>" alt="" />
+                                    <img class="detail_img" src="<?= \app\Helper\Html::getImgForArticle($article->id) ?>" alt="" />
                             </th>
                         </tr></tfoot>
                 </table>

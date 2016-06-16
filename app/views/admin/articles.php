@@ -3,6 +3,7 @@
 	<div class="ui three stackable cards container">
 		<a href="<?= \app\helper\Link::url('AdminController@addArticle')?>" style="float:right" class="positive ui button floated right">Ajouter</a>
 		<a href="<?= \app\helper\Link::url('AdminController@removeOutofstock')?>" style="float:right" class="negative ui button floated right">Supprimer les articles hors stock</a>
+		<?php app\helper\Auth::getFlash() ?>
 		<table class="ui selectable inverted table">
 			<thead>
 				<tr>
@@ -10,6 +11,7 @@
 					<th>Description</th>
 					<th>Type</th>
 					<th>Prix</th>
+					<th>Seuil</th>
 					<th>Statut</th>
 					<th>Éditeur</th>
 					<th>Date d'ajout</th>
@@ -24,6 +26,7 @@
 						<td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;"><?= $article->description ?></td>
 						<td><?= $article->type->name ?></td>
 						<td><?= $article->prix ?></td>
+						<td><?= $article->seuil ?></td>
 						<td><?= $article->status ?></td>
 						<td><?= $article->editeur ?></td>
 						<td><?= $article->created_at->diffForHumans() ?></td>
