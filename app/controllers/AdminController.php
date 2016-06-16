@@ -4,10 +4,7 @@ namespace app\controllers;
 use app\models\User;
 use app\models\Article;
 use app\models\Type;
-use Carbon\Carbon;
 use app\helper\Auth;
-use app\helper\Link;
-use app\helper\UserHelper;
 use app\helper\ArticleHelper;
 use app\helper\Redirect;
 
@@ -30,14 +27,13 @@ class AdminController extends BaseController
             $target_dir = "assets/uploads/articles/";
             $_FILES["articleImg"]["name"] = "{$id}.png";
             $target_file = $target_dir . basename($_FILES["articleImg"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
             $check = getimagesize($_FILES["articleImg"]["tmp_name"]);
             if($check !== false) {
                 move_uploaded_file($_FILES['articleImg']['tmp_name'], $target_file);
             }else {
                 unset($_POST); //to stop process at next condition
-                Auth::setFlash( "Un problème est survenue avec le format de l'image, veuillez ressayer", "error");
+                Auth::setFlash( "Un problème est survenue avec le format de l'image, veuillez réessayer", "error");
             }
         }
 
@@ -46,7 +42,7 @@ class AdminController extends BaseController
             if(ArticleHelper::editArticle($_POST['id'], $_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'])) {
                 Auth::setFlash("Article correctement édité", "positive");
             }else{
-                Auth::setFlash("Une erreur est survenue, veuillez ressayer", "error");
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
         $article = Article::where('id', '=', $id)->first();
@@ -67,7 +63,7 @@ class AdminController extends BaseController
             }elseif(Auth::editUser($_POST['id'], $_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['adresse'], $_POST['cp'], $_POST['tel'], $_POST['grade'])) {
                 Auth::setFlash("Utilisateur correctement édité", "positive");
             }else{
-                Auth::setFlash("Une erreur est survenue, veuillez ressayer", "error");
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
         $user = User::where('id', '=', $id)->first();
@@ -87,7 +83,7 @@ class AdminController extends BaseController
             }elseif(Auth::register($_POST['login'], $_POST['nom'], $_POST['prenom'], $_POST['password'], $_POST['email'], $_POST['adresse'], $_POST['cp'], $_POST['tel'], $_POST['grade'])) {
                 Auth::setFlash("Utilisateur correctement ajouté", "positive");
             }else{
-                Auth::setFlash("Une erreur est survenue, veuillez ressayer", "error");
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
         echo $this->render('admin/userEdit.php');
@@ -106,17 +102,16 @@ class AdminController extends BaseController
                     $target_dir = "assets/uploads/articles/";
                     $_FILES["articleImg"]["name"] = "{$article->id}.png";
                     $target_file = $target_dir . basename($_FILES["articleImg"]["name"]);
-                    $uploadOk = 1;
-                    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
                     $check = getimagesize($_FILES["articleImg"]["tmp_name"]);
                     if($check !== false) {
                         move_uploaded_file($_FILES['articleImg']['tmp_name'], $target_file);
                     }else {
-                        Auth::setFlash("Un problème est survenue avec le format de l'image, veuillez ressayer", "error");
+                        Auth::setFlash("Un problème est survenue avec le format de l'image, veuillez réessayer", "error");
                     }
                 }
             }else{
-                Auth::setFlash("Une erreur est survenue, veuillez ressayer", "error");
+                Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
             }
         }
         echo $this->render('admin/articleEdit.php', compact('types'));
