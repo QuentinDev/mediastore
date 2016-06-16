@@ -22,6 +22,7 @@ class Article
             $table->text('description');
             $table->integer('prix');
             $table->string('editeur');
+            $table->enum('status', array('disponibble', 'nouveauté', 'hors stock'))->default('nouveauté');
             $table->timestamps();
         });
 

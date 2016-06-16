@@ -23,6 +23,7 @@ class Article
             'type_id' => 1,
             'prix' => '25',
             'editeur' => 'Lucas arts',
+            'status' => 'nouveauté',
             'created_at' => $now,
             'updated_at' => $now,
         ]);
@@ -34,6 +35,7 @@ class Article
             'type_id' => 1,
             'prix' => '25',
             'editeur' => 'JB films',
+            'status' => 'nouveauté',
             'created_at' => $now,
             'updated_at' => $now,
         ]);
@@ -45,6 +47,7 @@ class Article
             'type_id' => 2,
             'prix' => '20',
             'editeur' => 'Lucas arts',
+            'status' => 'nouveauté',
             'created_at' => $now,
             'updated_at' => $now,
         ]);
@@ -56,6 +59,7 @@ class Article
             'type_id' => 2,
             'prix' => '30',
             'editeur' => 'Marvel',
+            'status' => 'nouveauté',
             'created_at' => $now,
             'updated_at' => $now,
         ]);
