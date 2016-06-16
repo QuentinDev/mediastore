@@ -9,3 +9,8 @@
 .show-modal {
     cursor: pointer;
 }
+
+img.detail_img {
+    height: 150px;
+    width: 150px;
+}
