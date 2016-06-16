@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <img src="http://lorempicsum.com/futurama/255/200/<?= rand(1, 5) ?>" alt="" />
+        <img src="<?= \app\Helper\Html::getImgForArticle($article->id) ?>" alt="" />
     </div>
     <div class="content">
         <a href="<?= \app\helper\Link::url('ArticlesController@detail', ['id' => $article->id])?>" class="header"><?= $article->nom ?></a>
@@ -26,7 +26,7 @@
             <?= $article->prix ?><i class="euro icon"></i>
         </div>
         <div class="type">
-            type: <a href="#<?= $article->type->name ?>"><?= $article->type->name ?></a>
+            type: <a href="<?= \app\helper\Link::url('ArticlesController@recherches', ['nom' => $article->type->name])?>"><?= $article->type->name ?></a>
         </div>
     </div>
 </div>
