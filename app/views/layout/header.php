@@ -21,7 +21,7 @@
 <body>
     <div class="ui large top hidden menu">
         <div class="ui container">
-            <a href="<?= \app\helper\Link::url('ArticlesController@nouveautes')?>" class="item">Accueil</a> <!-- class active -->
+            <a href="<?= \app\helper\Link::url('ArticlesController@nouveautes')?>" class="item">Nouveauté</a> <!-- class active -->
             <a href="<?= \app\helper\Link::url('ArticlesController@index')?>" class="item">Articles</a>
             <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item">Panier</a>
             <div class="right menu">

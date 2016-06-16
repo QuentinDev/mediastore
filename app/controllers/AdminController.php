@@ -38,8 +38,8 @@ class AdminController extends BaseController
         }
 
         /* Proceed Article Form */
-        if(isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
-            if(ArticleHelper::editArticle($_POST['id'], $_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'])) {
+        if(isset($_POST['id']) && isset($_POST['nom']) &&  isset($_POST['seuil']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
+            if(ArticleHelper::editArticle($_POST['id'], $_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'],  $_POST['seuil'])) {
                 Auth::setFlash("Article correctement édité", "positive");
             }else{
                 Auth::setFlash("Une erreur est survenue, veuillez réessayer", "error");
@@ -93,8 +93,8 @@ class AdminController extends BaseController
         $types = Type::all();
 
         /* Proceed Article Form */
-        if(isset($_POST['nom']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
-            $article = ArticleHelper::addArticle($_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId']);
+        if(isset($_POST['nom']) && isset($_POST['seuil']) && isset($_POST['status']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['editeur']) && isset($_POST['typeId'])) {
+            $article = ArticleHelper::addArticle($_POST['nom'], $_POST['status'], $_POST['description'], $_POST['prix'], $_POST['editeur'], $_POST['typeId'], $_POST['seuil']);
             if($article) {
                 Auth::setFlash("Article correctement ajouté", "positive");
                 /* IMG Upload */

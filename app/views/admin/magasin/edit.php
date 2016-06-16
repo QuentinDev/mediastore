@@ -42,11 +42,6 @@
                 <input type="number" id="number" name="number" placeholder="1" required>
             </div>
 
-            <div class="field">
-                <label for="seuil">Seuil</label>
-                <input type="number" id="seuil" name="seuil" placeholder="1" required>
-            </div>
-
             <div class="ui buttons">
                 <a href="<?= \app\helper\Link::url('AdminMagasinController@index')?>" class="ui button">Retour</a>
                 <div class="or" data-text="ou"></div>
@@ -62,12 +57,12 @@
                 <tr>
                     <th>Nom</th>
                     <th>Stock</th>
-                    <th>Seuil</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($magasin->articles as $article): ?>
+
                     <tr>
                         <td><?= $article->nom ?></td>
                         <td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;">
@@ -75,15 +70,11 @@
                                 <input type="number" name="number" value="<?= $article->pivot->quantity ?>" min="1">
                             </form>
                         </td>
-                        <td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;">
-                            <form method="post" action="<?= \app\helper\Link::url('AdminMagasinController@addQuantity', ['id' => $magasin->id, 'articleid' => $article->id]) ?>" class="ui large form">
-                                <input type="number" name="seuil" value="<?= $article->pivot->seuil ?>" min="1">
-                            </form>
-                        </td>
                         <td>
                             <div class="item"><a href="<?= \app\helper\Link::url('AdminMagasinController@delItem', ['id' => $magasin->id, 'articleid' => $article->id]) ?>" class="ui red button"><i class="trash icon"></i> Supprimer</a></div>
                         </td>
                     </tr>
+
                 <?php endforeach; ?>
                 </tbody>
             </table>

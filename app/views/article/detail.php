@@ -3,12 +3,22 @@
 </div>
 <div class="ui bottom attached active tab segment">
         <div class="ui items">
+                <?php if (\app\models\Article::getQuantityForId($article->id) < \app\models\Article::getQuantityForId($article->id)): ?>
+                <div class="ui warning message">
+                        <div class="header">
+                                Attention! Le seuil minimun pour cette nouveauté est atteint! Veuillez passer commande auprès de notre fournisseur.
+                        </div>
+
+                </div>
+                <?php endif; ?>
                 <table class="ui celled table">
                         <thead>
-                        <tr><th>Article</th>
-                                <th><?= $article->nom ?></th>
-                                <th></th>
-                        </tr></thead>
+                                <tr>
+                                        <th>Article</th>
+                                        <th><?=  $article->nom ?></th>
+                                        <th></th>
+                                </tr>
+                        </thead>
                         <tbody>
                         <tr>
                                 <td>
@@ -36,6 +46,11 @@
                         <tr>
                                 <td>Etat</td>
                                 <td><?= ucfirst($article->status) ?></td>
+                                <td></td>
+                        </tr>
+                        <tr>
+                                <td>Quantité</td>
+                                <td><?= \app\models\Article::getQuantityForId($article->id); ?></td>
                                 <td></td>
                         </tr>
                         </tbody>

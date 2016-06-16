@@ -43,7 +43,6 @@ class AdminMagasinController extends BaseController
         $adresse = Request::getInstance()->getInput()->get('adresse');
         $article_id = Request::getInstance()->getInput()->get('article_id');
         $number = Request::getInstance()->getInput()->get('number');
-        $seuil = Request::getInstance()->getInput()->get('seuil');
 
         $magasin = Magasin::findOrFail($id);
         if($nom && $adresse) {
@@ -56,9 +55,9 @@ class AdminMagasinController extends BaseController
             }
         }
 
-        if ($article_id && $number && $seuil) {
+        if ($article_id && $number) {
             $article = Article::findOrFail($article_id);
-            $article->magasins()->sync([$magasin->id => ['quantity' => $number, 'seuil' => $seuil]]);
+            $article->magasins()->sync([$magasin->id => ['quantity' => $number]]);
             Auth::setFlash("Article correctement ajouté", "positive");
         }
 
@@ -68,23 +67,11 @@ class AdminMagasinController extends BaseController
     
     public function addQuantity($id, $articleid) {
         $number = Request::getInstance()->getInput()->get('number');
-        $seuil = Request::getInstance()->getInput()->get('seuil');
-
-        $article = Article::findOrFail($articleid);
-
-        $sync = [];
         if ($number > 00) {
-            $sync['quantity'] = $number;
+            $article = Article::findOrFail($articleid);
+            $article->magasins()->sync([$id => ['quantity' => $number]]);
             Auth::setFlash("Quantité correctement modifié", "positive");
         }
-        if ($seuil > 00) {
-            $sync['seuil'] = $seuil;
-            Auth::setFlash("Sueil correctement modifié", "positive");
-        }
-
-        if (!empty($sync))
-            $article->magasins()->sync([$id => $sync]);
-
         Redirect::prev();
     }
 

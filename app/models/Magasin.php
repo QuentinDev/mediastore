@@ -8,6 +8,6 @@ class Magasin extends Eloquent {
     public function articles()
     {
         return $this->belongsToMany('app\models\article')
-            ->withPivot(['quantity', 'seuil']);
+            ->withPivot('quantity');
     }
 }
