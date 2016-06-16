@@ -63,9 +63,19 @@ class Router {
                 SimpleRouter::get('/magasins/{id}/edit', 'AdminMagasinController@edit');
                 SimpleRouter::post('/magasins/{id}/edit', 'AdminMagasinController@edit');
                 SimpleRouter::get('/magasins/{id}/delete', 'AdminMagasinController@delete');
-
                 SimpleRouter::post('/magasins/{id}/{articleid}', 'AdminMagasinController@addQuantity');
                 SimpleRouter::get('/magasins/{id}/{articleid}', 'AdminMagasinController@delItem');
+
+                SimpleRouter::get('/types', 'AdminTypesController@index');
+                SimpleRouter::get('/types/new', 'AdminTypesController@add');
+                SimpleRouter::post('/types/new', 'AdminTypesController@add');
+                SimpleRouter::get('/types/{id}/edit', 'AdminTypesController@edit');
+                SimpleRouter::post('/types/{id}/edit', 'AdminTypesController@edit');
+                SimpleRouter::get('/types/{id}/delete', 'AdminTypesController@delete');
+
+
+                SimpleRouter::get('/commandes', 'AdminCommandesController@index');
+                SimpleRouter::post('/commandes', 'AdminCommandesController@updateStatus');
             });
         });
 

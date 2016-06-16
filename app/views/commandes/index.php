@@ -1,4 +1,6 @@
 <div class="ui vertical stripe segment">
+    <h1 class="ui header">Mes commandes</h1>
+
     <div class="ui three stackable cards container">
         <?= app\helper\Auth::getFlash(); ?>
         <?php if (count($commandes) == 0) : ?>
@@ -17,9 +19,9 @@
                     <?php foreach ($commandes as $key => $item): ?>
                     <tr class="show-modal" data-id="<?= $key ?>">
                         <td><?= $key +1 ?></td>
-                        <td><?= $item->delivery_time ?></td>
-                        <td><?= $item->created_at ?></td>
-                        <td><?= $item->status ?></td>
+                        <td><?= e($item->delivery_time) ?></td>
+                        <td><?= e($item->created_at) ?></td>
+                        <td><?= e($item->status) ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -36,10 +38,10 @@
                             <div class="ui header">Voici un résumé de votre commande</div>
                             <div class="ui content">
                                 <ul>
-                                    <li><b>Date de livraison estimée:</b> <?= $item->delivery_time ?></li>
-                                    <li><b>Adresse de livraison:</b> <?= $item->user->adresse ?> <?= $item->user->cp ?></li>
+                                    <li><b>Date de livraison estimée:</b> <?= e($item->delivery_time) ?></li>
+                                    <li><b>Adresse de livraison:</b> <?= e($item->user->adresse) ?> <?= e($item->user->cp) ?></li>
 
-                                    <li><b>Téléphone:</b> <?= $item->user->tel ?></li>
+                                    <li><b>Téléphone:</b> <?= e($item->user->tel) ?></li>
 
                                 </ul>
                             </div>
@@ -51,13 +53,13 @@
                                             <img src="<?= \app\helper\Html::getImgForArticle($article->id) ?>">
                                         </div>
                                         <div class="content">
-                                            <a class="header"><?= $article->nom ?> (<?= $article->type->name ?>)</a>
+                                            <a class="header"><?= e($article->nom) ?> (<?= e($article->type->name) ?>)</a>
                                             <div class="meta">
-                                                Quantité: <?= $article->pivot->quantity ?>
-                                                Prix: <?= $article->prix ?><i class="euro icon"></i>
+                                                Quantité: <?= e($article->pivot->quantity) ?>
+                                                Prix: <?= e($article->prix) ?><i class="euro icon"></i>
                                             </div>
                                             <div class="description">
-                                                <p><?= $article->description ?></p>
+                                                <p><?= e($article->description) ?></p>
                                             </div>
                                             <div class="extra">
                                                 <b>Total: <?= $article->prix * $article->pivot->quantity ?><i class="euro icon"></i></b>
@@ -65,6 +67,9 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                            </div>
+                            <div class="ui item">
+                                <b>Prix TOTAL TTC: <?= e(\app\models\Commande::getTotalPrice($item->articles))?></b>
                             </div>
                         </div>
                     </div>

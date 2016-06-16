@@ -1,5 +1,6 @@
 <div class="ui vertical stripe segment">
     <h1>Liste des magasins</h1>
+
     <div class="ui three stackable cards container">
         <a href="<?= \app\helper\Link::url('AdminMagasinController@add')?>" style="float:right" class="positive ui button floated right">Ajouter</a>
         <?php app\helper\Auth::getFlash() ?>
@@ -16,9 +17,9 @@
             <?php foreach ($magasins as $magasin): ?>
 
                 <tr>
-                    <td><?= $magasin->nom ?></td>
-                    <td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;"><?= $magasin->adresse ?></td>
-                    <td><?= $magasin->created_at ?></td>
+                    <td><?= e($magasin->nom) ?></td>
+                    <td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;"><?= e($magasin->adresse) ?></td>
+                    <td><?= e($magasin->created_at) ?></td>
                     <td>
                         <div class="ui icon top left pointing dropdown button">
                             <i class="wrench icon"></i>
@@ -35,5 +36,3 @@
         </table>
     </div>
 </div>
-
-<script>$('.dropdown').dropdown();</script>
