@@ -10,6 +10,10 @@
     cursor: pointer;
 }
 
+.pusher {
+    margin-top: 75px;
+}
+
 #menu-panel .menu .item {
     min-width: 150px;
 }

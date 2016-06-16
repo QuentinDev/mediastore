@@ -1,21 +1,22 @@
 # mediastore
 
-renomer app/config/Database.php.sample en Database.php
+renomer app/config/Config.php.sample en Config.php
 
 ## install
 
 ```sh
 composer install
-composer dump-autoload
 ```
 
 ## Commande Database
 
 ```sh
-php app/databases/migrate_down.php
-php app/databases/migrate_up.php
-php app/databases/seed.php
+composer run-script migrate_down
+composer run-script migrate_up
+composer run-script seed
 ```
 
 ## vendors
 https://github.com/illuminate/database
+https://github.com/skipperbent/simple-php-router
+https://github.com/inacho/php-credit-card-validator

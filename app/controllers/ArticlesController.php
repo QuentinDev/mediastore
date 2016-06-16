@@ -2,7 +2,6 @@
 namespace app\controllers;
 
 use app\models\Article;
-use app\models\User;
 use Carbon\Carbon;
 
 class ArticlesController extends BaseController
@@ -31,7 +30,7 @@ class ArticlesController extends BaseController
             })
             ->get();
 
-        echo $this->render('articles/recherches.php', compact('articles'));
+        echo $this->render('articles/recherches.php', compact('articles', 'nom'));
     }
 
     //Recherche des nouveaux articles sr les critères:  1) n (paramètrable) derniers articles OU 2) articles de -1 mois

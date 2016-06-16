@@ -1,4 +1,5 @@
 <div class="ui vertical stripe segment">
+    <h1 class="ui header">Valider sa commande</h1>
     <div class="ui three stackable cards container">
         <?php app\helper\Auth::getFlash() ?>
         <table class="ui selectable single line table">
@@ -15,19 +16,19 @@
                 <?php $stock = app\models\Article::getQuantityForId($item->id); ?>
                 <tr>
                     <td>
-                        <b><?= $item->nom ?></b><br>
-                        <?= $item->description ?>
+                        <b><?= e($item->nom) ?></b><br>
+                        <?= e($item->description) ?>
                     </td>
-                    <td><?= $item->prix ?><small>€</small></td>
+                    <td><?= e($item->prix) ?><small>€</small></td>
                     <td>
                         <form method="post" action="<?= \app\helper\Link::url('PanierController@update', ['id' => $item->id])?>">
                             <div class="ui input disabled">
-                                <input type="number" name="quantity" value="<?= $item->quantity ?>" min="1" required>
+                                <input type="number" name="quantity" value="<?= e($item->quantity) ?>" min="1" required>
                             </div>
                         </form>
                     </td>
                     <td>
-                        <?= $stock ?>
+                        <?= e($stock) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -49,24 +50,24 @@
                     <div class="two fields">
                         <div class="field">
                             <label>Nom</label>
-                            <input placeholder="Picard" type="text" value="<?= $user->nom ?>" name="nom" required>
+                            <input placeholder="Picard" type="text" value="<?= e($user->nom) ?>" name="nom" required>
                         </div>
                         <div class="field">
                             <label>Prenom</label>
-                            <input placeholder="Jean-Luc" type="text" value="<?= $user->prenom ?>" name="prenom" required>
+                            <input placeholder="Jean-Luc" type="text" value="<?= e($user->prenom) ?>" name="prenom" required>
                         </div>
                     </div>
                     <div class="field">
                         <label>Adresse</label>
-                        <input type="text" placeholder="12 Place Tobie Robatel" value="<?= $user->adresse ?>" name="adresse" required>
+                        <input type="text" placeholder="12 Place Tobie Robatel" value="<?= e($user->adresse) ?>" name="adresse" required>
                     </div>
                     <div class="field">
                         <label>Code Postal</label>
-                        <input type="number" placeholder="69003" value="<?= $user->cp ?>" name="cp" required>
+                        <input type="number" placeholder="69003" value="<?= e($user->cp) ?>" name="cp" required>
                     </div>
                     <div class="field">
                         <label>Téléphone</label>
-                        <input type="tel" placeholder="03033033" value="<?= $user->tel ?>" name="tel" required>
+                        <input type="tel" placeholder="03033033" value="<?= e($user->tel) ?>" name="tel" required>
                     </div>
                     <div class="inline field">
                         <div class="ui checkbox">
@@ -99,7 +100,7 @@
                                 <label>Type</label>
                                 <select class="ui fluid dropdown" name="type" required>
                                     <?php foreach ($cardType as $key => $value): ?>
-                                        <option value="<?= $key ?>"><?= ucfirst($key) ?></option>
+                                        <option value="<?= e($key) ?>"><?= ucfirst(e($key)) ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

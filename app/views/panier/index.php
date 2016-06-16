@@ -1,4 +1,5 @@
 <div class="ui vertical stripe segment">
+    <h1 class="ui header">Mon panier</h1>
     <div class="ui three stackable cards container">
         <table class="ui selectable single line table">
             <thead>
@@ -15,14 +16,14 @@
                 <?php $stock = app\models\Article::getQuantityForId($item->id); ?>
                 <tr>
                     <td>
-                        <b><?= $item->nom ?></b><br>
-                        <?= $item->description ?>
+                        <b><?= e($item->nom) ?></b><br>
+                        <?= e($item->description) ?>
                     </td>
-                    <td><?= $item->prix ?><small>€</small></td>
+                    <td><?= e($item->prix) ?><small>€</small></td>
                     <td>
                         <form method="post" action="<?= \app\helper\Link::url('PanierController@update', ['id' => $item->id])?>">
                             <div class="ui input">
-                                <input type="number" name="quantity" value="<?= $item->quantity ?>" min="1">
+                                <input type="number" name="quantity" value="<?= e($item->quantity) ?>" min="1">
                             </div>
                         </form>
                     </td>

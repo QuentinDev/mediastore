@@ -1,6 +1,9 @@
 <div class="column" style="max-width: 450px; margin: 0px auto; padding: 20px;">
 	<form method="post" action="" class="ui large form" enctype="multipart/form-data">
 		<div class="ui stacked segment">
+			<h1 class="ui header">Édition de l'article</h1>
+			<div class="ui divider"></div>
+
 			<?php app\helper\Auth::getFlash() ?>
 
 			<?php if(isset($article->id)): ?>
@@ -8,15 +11,15 @@
 			<?php endif; ?>
 			<div class="field">
 				<label for="nom">Titre</label>
-				<input id="nom" value="<?= isset($article->nom) ? $article->nom : '' ?>" name="nom" placeholder="Star Wars" type="text" maxlength="255" required>
+				<input id="nom" value="<?= isset($article->nom) ? e($article->nom) : '' ?>" name="nom" placeholder="Star Wars" type="text" maxlength="255" required>
 			</div>
 			<div class="field">
 				<label for="description">Description</label>
-				<textarea id="description" name="description" placeholder="Il y a bien longtemps, dans une galaxie lointaine, très lointaine... " maxlength="255"  required><?= isset($article->description) ? $article->description : '' ?></textarea>
+				<textarea id="description" name="description" placeholder="Il y a bien longtemps, dans une galaxie lointaine, très lointaine... " maxlength="255"  required><?= isset($article->description) ? e($article->description) : '' ?></textarea>
 			</div>
 			<div class="field">
 				<label for="editeur">Éditeur</label>
-				<input id="editeur" value="<?= isset($article->editeur) ? $article->editeur : '' ?>" name="editeur" placeholder="George Lucas" type="text" maxlength="255" required>
+				<input id="editeur" value="<?= isset($article->editeur) ? e($article->editeur) : '' ?>" name="editeur" placeholder="George Lucas" type="text" maxlength="255" required>
 			</div>
 			<div class="field">
 				<label>Statut</label>
@@ -36,12 +39,12 @@
 			</div>
 			<div class="field">
 				<label for="prix">Prix (en €)</label>
-				<input id="prix" value="<?= isset($article->prix) ? $article->prix : '' ?>" name="prix" placeholder="49€" type="number" required>
+				<input id="prix" value="<?= isset($article->prix) ? e($article->prix) : '' ?>" name="prix" placeholder="49€" type="number" required>
 			</div>
 
 			<div class="field">
 				<label for="seuil">Seuil</label>
-				<input id="seuil" value="<?= isset($article->seuil) ? $article->seuil : '' ?>" name="seuil" placeholder="15" type="number" required>
+				<input id="seuil" value="<?= isset($article->seuil) ? e($article->seuil) : '' ?>" name="seuil" placeholder="15" type="number" required>
 			</div>
 
 			<div class="field">

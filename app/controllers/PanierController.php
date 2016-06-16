@@ -8,7 +8,6 @@
 
 namespace app\controllers;
 
-use app\helper\Link;
 use app\helper\Redirect;
 use app\models\Cart;
 

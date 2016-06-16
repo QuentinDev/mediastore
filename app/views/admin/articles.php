@@ -1,5 +1,6 @@
 <div class="ui vertical stripe segment">
 	<h1>Liste des articles</h1>
+
 	<div class="ui three stackable cards container">
 		<a href="<?= \app\helper\Link::url('AdminController@addArticle')?>" style="float:right" class="positive ui button floated right">Ajouter</a>
 		<a href="<?= \app\helper\Link::url('AdminController@removeOutofstock')?>" style="float:right" class="negative ui button floated right">Supprimer les articles hors stock</a>
@@ -22,14 +23,14 @@
 				<?php foreach ($articles as $article): ?>
 
 					<tr>
-						<td><?= $article->nom ?></td>
-						<td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;"><?= $article->description ?></td>
-						<td><?= $article->type->name ?></td>
-						<td><?= $article->prix ?></td>
-						<td><?= $article->seuil ?></td>
-						<td><?= $article->status ?></td>
-						<td><?= $article->editeur ?></td>
-						<td><?= $article->created_at->diffForHumans() ?></td>
+						<td><?= e($article->nom) ?></td>
+						<td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;"><?= e($article->description) ?></td>
+						<td><?= e($article->type->name) ?></td>
+						<td><?= e($article->prix) ?></td>
+						<td><?= e($article->seuil) ?></td>
+						<td><?= e($article->status) ?></td>
+						<td><?= e($article->editeur) ?></td>
+						<td><?= e($article->created_at->diffForHumans()) ?></td>
 						<td>
 							<div class="ui icon top left pointing dropdown button">
 								<i class="wrench icon"></i>
@@ -46,5 +47,3 @@
 		</table>
 	</div>
 </div>
-
-<script>$('.dropdown').dropdown();</script>

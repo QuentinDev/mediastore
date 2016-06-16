@@ -19,16 +19,28 @@
     <script src="assets/js/main.js"></script>
 </head>
 <body>
-    <div class="ui large top hidden menu">
+    <div class="ui large top fixed menu transition visible">
         <div class="ui container">
-            <a href="<?= \app\helper\Link::url('ArticlesController@nouveautes')?>" class="item">Nouveauté</a> <!-- class active -->
-            <a href="<?= \app\helper\Link::url('ArticlesController@index')?>" class="item">Articles</a>
-            <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item">Panier</a>
+            <a href="<?= \app\helper\Link::url('ArticlesController@nouveautes')?>" class="header item" title="Nouveauté">Médi@Store <i class="icon lightning"></i></a> <!-- class active -->
+            <a href="<?= \app\helper\Link::url('ArticlesController@index')?>" class="item" title="Tous les articles"><i class="icon book"></i></a>
+            <a href="<?= \app\helper\Link::url('PanierController@index')?>" class="item" title="Panier"><i class="in cart icon"></i> (<?= $panier->cartCount() ?>)</a>
+
+            <div class="ui dropdown item">
+                <div class="text">Trier par</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <?php foreach ($type_menu as $type): ?>
+                    <a class="item" href="<?= \app\helper\Link::url('ArticlesController@recherches', ['nom' => e($type['name'])]) ?>"><?= e($type['name']) ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+
             <div class="right menu">
                 <?php if(app\helper\auth::isAuth()): ?>
                     <div class="ui compact menu" style="margin: 10px;">
                         <div class="ui simple dropdown item" id="menu-panel">
-                            <?= $_SESSION['user']->prenom; ?>
+                            <?= e(\app\helper\Auth::getUser()->prenom) ?>
                             <i class="dropdown icon"></i>
                             <div class="menu">
                                 <a class="item" href="<?= \app\helper\Link::url('UserController@profile')?>" class="ui button"><i class="icon user"></i> Mon profil</a>
@@ -38,7 +50,9 @@
                                     <div class="header">Intranet</div>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listArticles')?>" class="ui button"><i class="icon book"></i> Articles</a>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminMagasinController@index')?>" class="ui button"><i class="icon shop"></i> Magasins</a>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminTypesController@index')?>" class="ui button"><i class="icon shop"></i> Types</a>
                                     <a class="item" href="<?= \app\helper\Link::url('AdminController@listUsers')?>" class="ui button"><i class="icon users"></i> Users</a>
+                                    <a class="item" href="<?= \app\helper\Link::url('AdminCommandesController@index')?>" class="ui button"><i class="icon archive"></i> Commandes</a>
                                     <div class="divider"></div>
                                 <?php endif; ?>
                                 <a class="item" href="<?= \app\helper\Link::url('UserController@logout')?>" class="ui button"><i class="icon sign out"></i> Se déconnecter</a>
@@ -65,13 +79,5 @@
         </div>
     </div>
 
-    <!-- Sidebar Menu -->
-    <div class="ui vertical inverted sidebar menu">
-        <a class="active item">Accueil</a>
-        <a class="item">Panier</a>
-        <a class="item">Se connecter</a>
-        <a class="item">S'inscrire</a>
-        <a class="item">Recherche</a>
-    </div>
-
-    <div class="ui center aligned container">
+    <div class="pusher">
+        <div class="ui center aligned container">
