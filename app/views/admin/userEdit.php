@@ -8,7 +8,7 @@
 				<?php app\helper\Auth::getFlash() ?>
 				<div class="field">
 					<label for="login">Login</label>
-					<input id="login" value="<?= isset($user->login) ? e($user->login) : '' ?>" name="login" placeholder="jdoe" type="text" maxlength="255" required>
+					<input id="login" value="<?= isset($user->login) ? e($user->login) : '' ?>" placeholder="jdoe" type="text" maxlength="255" disabled>
 				</div>
 				<?php if(isset($user->id)): ?>
 					<input value="<?= $user->id ?>" name="id" type="hidden">

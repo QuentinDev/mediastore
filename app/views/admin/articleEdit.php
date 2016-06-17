@@ -39,12 +39,12 @@
 			</div>
 			<div class="field">
 				<label for="prix">Prix (en €)</label>
-				<input id="prix" value="<?= isset($article->prix) ? e($article->prix) : '' ?>" name="prix" placeholder="49€" type="number" required>
+				<input id="prix" value="<?= isset($article->prix) ? e($article->prix) : '' ?>" name="prix" placeholder="49€" type="number" min="1" required>
 			</div>
 
 			<div class="field">
 				<label for="seuil">Seuil</label>
-				<input id="seuil" value="<?= isset($article->seuil) ? e($article->seuil) : '' ?>" name="seuil" placeholder="15" type="number" required>
+				<input id="seuil" value="<?= isset($article->seuil) ? e($article->seuil) : '' ?>" name="seuil" placeholder="15" type="number" min="1" required>
 			</div>
 
 			<div class="field">

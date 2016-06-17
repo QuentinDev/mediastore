@@ -38,8 +38,8 @@ class UserController extends BaseController
     }
 
     public function profile() {
-        if(isset($_POST['login']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel'])) {
-            if(Auth::editUser(Auth::getUser()->id, $_POST['login'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['tel'],Auth::isAdmin())) {
+        if(isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['tel'])) {
+            if(Auth::editUser(Auth::getUser()->id, $_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['tel'],Auth::isAdmin())) {
                 Auth::setFlash("Profil correctement édité", "positive");
                 Redirect::url('ArticlesController@nouveautes');
                 exit();

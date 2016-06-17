@@ -37,10 +37,9 @@ class Auth
 		return $user->save();
 	}
 
-	public static function editUser($id, $login, $nom, $prenom, $email, $adresse, $cp, $tel, $grade = 0 ) {
+	public static function editUser($id, $nom, $prenom, $email, $adresse, $cp, $tel, $grade = 0 ) {
 		$user = User::where('id', '=', $id)->first();
 		$now = Carbon::now();
-		$user->login = $login;
 		$user->nom = $nom;
 		$user->prenom = $prenom;
 		$user->email = $email;

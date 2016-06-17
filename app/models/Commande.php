@@ -18,7 +18,7 @@ class Commande extends Eloquent {
 	public static function getTotalPrice($articles) {
 		$price = 0;
 		foreach ($articles as $article)
-			$price += $article->prix;
+			$price += $article->prix * $article->pivot->quantity;
 		return $price;
 	}
 }
