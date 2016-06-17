@@ -2,6 +2,8 @@ $(document)
     .ready(function() {
         $('.dropdown').dropdown();
 
+        $('#popup_alert').popup();
+
         // start dimmer when hover
         $('.card .image').dimmer({ on: 'hover' });
 

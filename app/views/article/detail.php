@@ -4,14 +4,6 @@
 
     <div class="ui bottom attached active tab segment">
         <div class="ui items">
-            <?php if (\app\models\Article::getQuantityForId($article->id) < $article->seuil): ?>
-                <div class="ui warning message">
-                    <div class="header">
-                        Attention! Le seuil minimun pour cette nouveauté est atteint! Veuillez passer commande auprès de notre fournisseur.
-                    </div>
-
-                </div>
-            <?php endif; ?>
             <table class="ui celled table">
                 <thead>
                 <tr>

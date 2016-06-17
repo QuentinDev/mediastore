@@ -39,6 +39,11 @@
 									<div class="item"><a href="<?= \app\helper\Link::url('AdminController@deleteArticle', ['id' => $article->id])?>" class="ui red button"><i class="trash icon"></i> Supprimer</a></div>
 								</div>
 							</div>
+							<?php if (\app\models\Article::getQuantityForId($article->id) < $article->seuil): ?>
+								<div id="popup_alert" class="ui icon button" data-content="Attention! Le seuil minimun pour cette nouveauté est atteint! Veuillez passer commande auprès de notre fournisseur." data-variation="basic">
+									<i class="alarm icon"></i>
+								</div>
+							<?php endif; ?>
 						</td>
 					</tr>
 
