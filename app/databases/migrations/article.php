@@ -28,7 +28,9 @@ class Article
         });
 
         Capsule::schema()->table('articles', function($table) {
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

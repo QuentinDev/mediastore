@@ -13,7 +13,7 @@
                     <label for="password">Mot de passe</label>
                     <input id="password" name="password" placeholder="Mot de passe" type="password" required>
                 </div>
-                <button class="ui fluid large teal submit button" type="submit">Submit</button>
+                <button class="ui fluid large teal submit button" type="submit">Envoyer</button>
             </div>
         </form>
     </div>

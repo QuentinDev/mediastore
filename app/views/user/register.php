@@ -38,7 +38,7 @@
 					<label for="tel">Téléphone</label>
 					<input id="tel" name="tel" placeholder="Téléphone" type="tel" required>
 				</div>
-				<button class="ui fluid large teal submit button" type="submit">Submit</button>
+				<button class="ui fluid large teal submit button" type="submit">Envoyer</button>
 			</div>
 		</form>
 	</div>
