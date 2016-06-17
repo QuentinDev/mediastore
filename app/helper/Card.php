@@ -8,7 +8,6 @@
 
 namespace app\helper;
 
-
 use Inacho\CreditCard;
 use Pecee\Http\Request;
 

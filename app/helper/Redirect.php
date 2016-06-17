@@ -2,7 +2,6 @@
 
 namespace app\helper;
 
-use app\config\Router;
 use \Pecee\SimpleRouter\RouterBase;
 
 class Redirect

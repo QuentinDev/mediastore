@@ -1,6 +1,4 @@
-	</div>
-	<script>
-    $('.dropdown').dropdown();
-    </script>
+	    </div>
+    </div>
 </body>
 </html>

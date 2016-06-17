@@ -4,7 +4,6 @@ namespace app\controllers;
 use app\helper\Redirect;
 use app\models\User;
 use app\helper\Auth;
-use app\helper\Link;
 
 class UserController extends BaseController
 {

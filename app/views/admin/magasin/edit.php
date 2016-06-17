@@ -1,6 +1,9 @@
 <div class="column" style="max-width: 450px; margin: 0px auto; padding: 20px;">
     <form method="post" action="" class="ui large form" enctype="multipart/form-data">
         <div class="ui stacked segment">
+            <h1 class="ui header">Édition du magasin</h1>
+            <div class="ui divider"></div>
+
             <?php app\helper\Auth::getFlash() ?>
 
             <?php if(isset($magasin->id)): ?>
@@ -9,12 +12,12 @@
 
             <div class="field">
                 <label for="nom">Nom</label>
-                <input id="nom" value="<?= isset($magasin->nom) ? $magasin->nom : '' ?>" name="nom" placeholder="LDLC" type="text" maxlength="255" required>
+                <input id="nom" value="<?= isset($magasin->nom) ? e($magasin->nom) : '' ?>" name="nom" placeholder="LDLC" type="text" maxlength="255" required>
             </div>
 
             <div class="field">
                 <label for="adresse">Adresse</label>
-                <textarea id="adresse" name="adresse" placeholder="28 rue du lycée 69003 Lyon" maxlength="255" required><?= isset($magasin->adresse) ? $magasin->adresse : '' ?></textarea>
+                <textarea id="adresse" name="adresse" placeholder="28 rue du lycée 69003 Lyon" maxlength="255" required><?= isset($magasin->adresse) ? e($magasin->adresse) : '' ?></textarea>
             </div>
 
             <div class="ui buttons">
@@ -64,7 +67,7 @@
                 <?php foreach ($magasin->articles as $article): ?>
 
                     <tr>
-                        <td><?= $article->nom ?></td>
+                        <td><?= e($article->nom) ?></td>
                         <td style="overflow: hidden;text-overflow: ellipsis;max-width: 370px;white-space: nowrap;">
                             <form method="post" action="<?= \app\helper\Link::url('AdminMagasinController@addQuantity', ['id' => $magasin->id, 'articleid' => $article->id]) ?>" class="ui large form">
                                 <input type="number" name="number" value="<?= $article->pivot->quantity ?>" min="1">

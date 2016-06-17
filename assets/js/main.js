@@ -1,5 +1,6 @@
 $(document)
     .ready(function() {
+        $('.dropdown').dropdown();
 
         // start dimmer when hover
         $('.card .image').dimmer({ on: 'hover' });
@@ -52,6 +53,15 @@ $(document)
                         button.prop('disabled', false);
                     }
                 }
+            );
+        });
+
+        // gestion de la commande
+        $('.update_status').find('select').change(function() {
+            var _this = $(this);
+
+            $.post($('base').attr('href') + 'admin/commandes',
+                _this.parents('form').serializeObject()
             );
         });
 

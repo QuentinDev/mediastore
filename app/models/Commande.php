@@ -14,4 +14,11 @@ class Commande extends Eloquent {
 	public function user() {
 		return $this->belongsTo('app\models\user');
 	}
+
+	public static function getTotalPrice($articles) {
+		$price = 0;
+		foreach ($articles as $article)
+			$price += $article->prix;
+		return $price;
+	}
 }

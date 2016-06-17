@@ -3,7 +3,6 @@
 namespace app\handlers;
 
 use app\helper\Auth;
-use app\helper\Link;
 use app\helper\Redirect;
 use Pecee\Http\Middleware;
 use Pecee\Http\Middleware\IMiddleware;

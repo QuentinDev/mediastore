@@ -5,8 +5,6 @@ namespace app\helper;
 use app\models\User;
 use Carbon\Carbon;
 use app\helper\links;
-use app\helper\Html;
-
 
 class Auth
 {

@@ -1,3 +1,7 @@
+body {
+    background: ghostwhite;
+}
+
 .hide {
     display: none;
 }
@@ -8,6 +12,10 @@
 
 .show-modal {
     cursor: pointer;
+}
+
+.pusher {
+    margin-top: 75px;
 }
 
 #menu-panel .menu .item {
