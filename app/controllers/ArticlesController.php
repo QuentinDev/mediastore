@@ -17,9 +17,7 @@ class ArticlesController extends BaseController
 
     //Recherche des articles sur un des critères ci-dessous. Soit nom, ou description, ou ...
     public function recherches ($nom){
-
-        if(isset($_POST['search']))
-            $nom=$_POST['search'];
+        $nom = stripcslashes($nom);
 
         $articles = Article::with('Type')->where('nom', 'like', '%'.$nom.'%')
             ->orWhere('description', 'like', '%'.$nom.'%')

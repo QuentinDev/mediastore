@@ -27,13 +27,13 @@ $(document)
 
         $('#search').keypress(function(e) {
             if(e.which == 13) {
-                var text = $('#search').val();
+                var text = $('#search').val().replace(/\//g, '').replace(/\\/g, '');
 
                 //Si le texte de la recherche est vide alors on ne fait rien.
                 if (text.length == 0)
                     return;
 
-                window.location.pathname = $('base').attr('href') + 'articles/' + text;
+                window.location.pathname = $('base').attr('href') + 'articles/' + text.replace(/\//g, '');
             }
         });
 
