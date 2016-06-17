@@ -40,7 +40,7 @@
 								</div>
 							</div>
 							<?php if (\app\models\Article::getQuantityForId($article->id) < $article->seuil): ?>
-								<div id="popup_alert" class="ui icon button" data-content="Attention! Le seuil minimun pour cette nouveauté est atteint! Veuillez passer commande auprès de notre fournisseur." data-variation="basic">
+								<div  class="ui icon button popup_alert" data-content="Attention! Le seuil minimun pour cette nouveauté est atteint! Veuillez passer commande auprès de notre fournisseur." data-variation="basic">
 									<i class="alarm icon"></i>
 								</div>
 							<?php endif; ?>
