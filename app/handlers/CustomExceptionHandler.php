@@ -10,7 +10,8 @@ class CustomExceptionHandler implements IExceptionHandler {
 
     public function handleError( Request $request, RouterEntry $router = null, \Exception $error) {
         if($error->getCode() === 404) {
-            echo 'error 404';
+            require('app/views/errors/404.php');
+            die();
         }
     }
 
